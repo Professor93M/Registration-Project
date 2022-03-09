@@ -3053,6 +3053,26 @@ function Dashboard(props) {
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Students/Information.js":
+/*!****************************************************!*\
+  !*** ./resources/js/Pages/Students/Information.js ***!
+  \****************************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Students/Show.js":
+/*!*********************************************!*\
+  !*** ./resources/js/Pages/Students/Show.js ***!
+  \*********************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Welcome.js":
 /*!***************************************!*\
   !*** ./resources/js/Pages/Welcome.js ***!
@@ -56569,6 +56589,10 @@ var map = {
 	"./Auth/Register.js": "./resources/js/Pages/Auth/Register.js",
 	"./Dashboard": "./resources/js/Pages/Dashboard.js",
 	"./Dashboard.js": "./resources/js/Pages/Dashboard.js",
+	"./Students/Information": "./resources/js/Pages/Students/Information.js",
+	"./Students/Information.js": "./resources/js/Pages/Students/Information.js",
+	"./Students/Show": "./resources/js/Pages/Students/Show.js",
+	"./Students/Show.js": "./resources/js/Pages/Students/Show.js",
 	"./Welcome": "./resources/js/Pages/Welcome.js",
 	"./Welcome.js": "./resources/js/Pages/Welcome.js"
 };
