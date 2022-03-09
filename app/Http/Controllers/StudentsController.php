@@ -14,7 +14,7 @@ class StudentsController extends Controller
         if($student){
             return Redirect::back()->with('success', ['icon' => 'warning' ,'title' => 'انتباه', 'message' => 'لايمكنك دخول هذه الصفحة']);
         }else{
-            return Inertia::render('Information');
+            return Inertia::render('Students/Information');
         }
     }
 
@@ -43,7 +43,7 @@ class StudentsController extends Controller
     }
     
     public function show(Students $id){
-        return Inertia::render('Show', [
+        return Inertia::render('Students/Show', [
             'student' => Students::findOrFail($id)
         ]);
     }
