@@ -8,8 +8,7 @@ import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
-        email: '',
+        mobile: '',
         password: '',
         password_confirmation: '',
     });
@@ -53,12 +52,12 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <Label forInput="email" value="Email" />
+                    <Label forInput="mobile" value="mobile" />
 
                     <Input
-                        type="email"
-                        name="email"
-                        value={data.email}
+                        type="text"
+                        name="mobile"
+                        value={data.mobile}
                         className="mt-1 block w-full"
                         autoComplete="username"
                         handleChange={onHandleChange}
