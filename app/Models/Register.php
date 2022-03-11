@@ -16,6 +16,6 @@ class Register extends Model
     ];
 
     public function students(){
-        return $this->has(Students::class);
+        return $this->belongsTo(Students::class);
     }
 }

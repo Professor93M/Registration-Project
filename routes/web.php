@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use App\Models\Register;
+use App\Models\Students;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,7 +24,18 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $student = Students::where('users_id', Auth::user()->id)->first();
+    $student ? $stage1 = true : $stage1 = false;
+    if($student){
+        Register::where('students_id', $student->id)->first() ? $stage2 = true : $stage2 = false;
+    }else{
+        $stage2 =null;
+    }
+    // dd($stage1);
+    return Inertia::render('Dashboard', [
+        'stage1' => $stage1,
+        'stage2' => $stage2
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

@@ -22,6 +22,7 @@ class StudentsController extends Controller
         $request->validate([
             'fullname' => 'required|min:10',
             'DOB' => 'required|date',
+            'year' => 'required|date_format:Y',
             'n_lessons' => 'required|numeric',
             'sum' => 'required|numeric',
             'round' => 'required|numeric',
@@ -31,6 +32,7 @@ class StudentsController extends Controller
         Students::create([
             'fullname' => $request->fullname,
             'DOB' => $request->dob,
+            'year' => $request->year,
             'n_lessons' => $request->n_lessons,
             'sum' => $request->sum,
             'avg' => $request->sum/$request->n_lessons,

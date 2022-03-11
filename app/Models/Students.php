@@ -12,6 +12,7 @@ class Students extends Model
     protected $fillable = [
         'fullname',
         'dob',
+        'year',
         'n_lessons',
         'sum',
         'avg',
@@ -21,6 +22,6 @@ class Students extends Model
     ];
 
     public function register(){
-        return $this->has(Register::class);
+        return $this->hasMany(Register::class);
     }
 }
