@@ -11,7 +11,7 @@ use Inertia\Inertia;
 class StudentsController extends Controller
 {
     public function create(){
-        $student = Students::where('users_id', Auth::user()->id);
+        $student = Students::where('users_id', Auth::user()->id)->first('id');
         if($student){
             return Redirect::back()->with('success', ['icon' => 'warning' ,'title' => 'انتباه', 'message' => 'لايمكنك دخول هذه الصفحة']);
         }else{
