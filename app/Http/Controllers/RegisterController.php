@@ -43,4 +43,20 @@ class RegisterController extends Controller
             'columns' => ['#', 'الاسم', 'المعدل', 'سنة التخرج', 'التولد', 'القسم', 'الدراسة', 'تاريخ التسجيل']
         ]);
     }
+
+    public function update(Register $register, Request $request){
+        $request->validate([
+            'dept' => 'required|numeric',
+            'type' => 'required|numeric'
+        ]);
+        if($request->dept !== $student->dept || $request->type !== $student->type){
+            $student->update([
+                'dept' => $request->dept,
+                'type' => $request->type,
+            ]);
+            return Redirect::route('dashboard')->with('success', ['icon' => 'success' ,'title' => 'نجحت العملية', 'message' => 'تم تحديث اختيار القسم']);
+        }else{
+            return Redirect::route('dashboard');
+        }
+    }
 }
