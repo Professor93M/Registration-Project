@@ -1,13 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
+import { FadeIn } from "@/animations";
+import { motion } from "framer-motion";
 
 export default function Input({
-    type = 'text',
+    type = "text",
     name,
     value,
     className,
     autoComplete,
     required,
     isFocused,
+    max,
+    min,
     handleChange,
 }) {
     const input = useRef();
@@ -19,20 +23,20 @@ export default function Input({
     }, []);
 
     return (
-        <div className="flex flex-col items-start">
-            <input
-                type={type}
-                name={name}
-                value={value}
-                className={
-                    `border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm ` +
-                    className
-                }
-                ref={input}
-                autoComplete={autoComplete}
-                required={required}
-                onChange={(e) => handleChange(e)}
-            />
-        </div>
+        <motion.input
+            variants={FadeIn}
+            animate="show"
+            initial="hidden"
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            name={name}
+            id={name}
+            type={type}
+            max={max}
+            min={min}
+            value={value}
+            onChange={(e) => handleChange(e)}
+
+            // placeholder={placeholder}
+        />
     );
 }
