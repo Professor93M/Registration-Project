@@ -13,6 +13,7 @@ class Students extends Model
         'fullname',
         'dob',
         'year',
+        'gender',
         'n_lessons',
         'sum',
         'avg',

@@ -27,7 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::post('store', [StudentsController::class, 'store'])->name('store');
 
     Route::get('dept', [RegisterController::class, 'create'])->name('dept');
-    Route::get('save', [RegisterController::class, 'store'])->name('deptsave');
+    Route::post('save', [RegisterController::class, 'store'])->name('deptsave');
     Route::get('dshow/{id}', [RegisterController::class, 'show'])->name('dshow');
+
+    Route::get('information/{id}', [RegisterController::class, 'information'])->name('information');
 });
 
