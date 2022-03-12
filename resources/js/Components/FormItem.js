@@ -11,6 +11,7 @@ const FormItem = ({
     max,
     min,
     maxLength,
+    value,
     pattern,
     handleChange,
     className,
@@ -36,6 +37,7 @@ const FormItem = ({
                     type={type}
                     max={max}
                     min={min}
+                    value={value}
                     maxLength={maxLength}
                     pattern={pattern}
                     handleChange={handleChange}
