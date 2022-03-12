@@ -8,6 +8,7 @@ import Button from "@/Components/Button";
 import Combo from "@/Components/Combo";
 
 const Create = (props) => {
+    console.log(props);
     const { data, setData, post, processing, errors, reset } = useForm({
         dept: "",
         type: "",
@@ -80,8 +81,8 @@ const Create = (props) => {
                         </motion.div>
                         <div className="w-full bg-white py-8 rounded-lg">
                             <div className="w-full px-6">
-                                <div className="-mx-3">
-                                    <form className="px-3 grid grid-cols-4 items-center justify-center gap-x-3">
+                                <div className="-mx-3 ">
+                                    <form className="px-3 grid grid-cols-2 items-center justify-center gap-x-3">
                                         <FormItem>
                                             <Combo
                                                 className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"

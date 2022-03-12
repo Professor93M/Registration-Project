@@ -2451,7 +2451,7 @@ var FormItem = function FormItem(_ref) {
     variants: _animations__WEBPACK_IMPORTED_MODULE_1__.Container,
     initial: "hidden",
     animate: "show",
-    className: "".concat(className, " relative flex flex-wrap mb-6"),
+    className: "".concat(className, "  mb-6"),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Label__WEBPACK_IMPORTED_MODULE_3__["default"], {
       forInput: name,
       value: label,
@@ -3374,6 +3374,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Create = function Create(props) {
+  console.log(props);
+
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
     dept: "",
     type: ""
@@ -3444,9 +3446,9 @@ var Create = function Create(props) {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
               className: "w-full px-6",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "-mx-3",
+                className: "-mx-3 ",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
-                  className: "px-3 grid grid-cols-4 items-center justify-center gap-x-3",
+                  className: "px-3 grid grid-cols-2 items-center justify-center gap-x-3",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
                       className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",

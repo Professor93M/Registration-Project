@@ -22,7 +22,7 @@ const FormItem = ({
             variants={Container}
             initial="hidden"
             animate="show"
-            className={`${className} relative flex flex-wrap mb-6`}
+            className={`${className}  mb-6`}
         >
             <Label
                 forInput={name}
