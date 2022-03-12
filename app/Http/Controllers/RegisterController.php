@@ -15,7 +15,9 @@ class RegisterController extends Controller
         $student = Students::where('users_id', Auth::user()->id)->first();
         Register::where('students_id', $student->id)->first() ? $reg = true : $reg = false;
         if(!$reg){
-            return Inertia::render('Register/Create');
+            return Inertia::render('Register/Create', [
+                'students' => $student
+            ]);
         }else{
             return Redirect::back()->with('success', ['icon' => 'warning' ,'title' => 'انتباه', 'message' => 'لايمكنك دخول هذه الصفحة']);
         }
@@ -23,8 +25,8 @@ class RegisterController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'dept' => 'required|numeric',
-            'type' => 'required|numeric'
+            'dept' => 'required',
+            'type' => 'required'
         ]);
 
         Register::create([
@@ -36,12 +38,11 @@ class RegisterController extends Controller
         return Redirect::route('dashboard')->with('success', ['icon' => 'success' ,'title' => 'نجحت العملية', 'message' => 'تم اختيار القسم']);
     }
 
-    public function show($id){
-        $register = Register::whereHas('students', function($reg){
-            dd($reg);
-        });
+    public function show(){
+        $std = Students::where('users_id', Auth::user()->id)->first('id');
+        $register = Register::where('students_id', $std)->first();
         return Inertia::render('Register/Show', [
-            'register' => $register,
+            'register' => $register ? $register : null,
         ]);
     }
 
@@ -52,13 +53,15 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function update(Register $register, Request $request){
+    public function update($id, Request $request){
+        $std = Students::where('users_id', Auth::user()->id)->first('id');
+        $register = Register::where('students_id', $std)->first();
         $request->validate([
-            'dept' => 'required|numeric',
-            'type' => 'required|numeric'
+            'dept' => 'required',
+            'type' => 'required'
         ]);
-        if($request->dept !== $student->dept || $request->type !== $student->type){
-            $student->update([
+        if($request->dept !== $register->dept || $request->type !== $register->type){
+            $register->update([
                 'dept' => $request->dept,
                 'type' => $request->type,
             ]);
