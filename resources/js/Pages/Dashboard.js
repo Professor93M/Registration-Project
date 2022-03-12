@@ -70,7 +70,7 @@ export default function Dashboard(props) {
                                                 : stage.description
                                         }
                                         link={
-                                            props.stage1
+                                            props.active
                                                 ? `/show/${props.auth.user.id}`
                                                 : stage.link
                                         }

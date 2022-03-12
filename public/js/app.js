@@ -3327,7 +3327,7 @@ function Dashboard(props) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_StageCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
                   title: stage.title,
                   description: props.student ? stage.studentDesc : stage.description,
-                  link: props.stage1 ? "/show/".concat(props.auth.user.id) : stage.link,
+                  link: props.active ? "/show/".concat(props.auth.user.id) : stage.link,
                   active: stage.active,
                   className: stage.className
                 }, stage.title);
@@ -3622,7 +3622,7 @@ var Show = function Show(props) {
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
     fullname: props.student.fullname || "",
     address: props.student.address || "",
-    dob: props.student.dob || "",
+    dob: props.student.DOB || "",
     gender: props.student.gender || "",
     phone: props.student.phone || "",
     email: props.student.email || "",
@@ -3665,6 +3665,7 @@ var Show = function Show(props) {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    console.log(data);
     post("/update/".concat(props.auth.user.id));
   };
 

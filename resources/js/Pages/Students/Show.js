@@ -12,7 +12,7 @@ const Show = (props) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         fullname: props.student.fullname || "",
         address: props.student.address || "",
-        dob: props.student.dob || "",
+        dob: props.student.DOB || "",
         gender: props.student.gender || "",
         phone: props.student.phone || "",
         email: props.student.email || "",
@@ -62,6 +62,7 @@ const Show = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(data);
         post(`/update/${props.auth.user.id}`);
     };
 
