@@ -39,20 +39,14 @@ class RegisterController extends Controller
     }
 
     public function show(){
-        $std = Students::where('users_id', Auth::user()->id)->first('id');
-        $register = Register::where('students_id', $std)->first();
+        $std = Students::where('users_id', Auth::user()->id)->first();
+        $register = Register::where('students_id', $std->id)->first();
         return Inertia::render('Register/Show', [
             'register' => $register ? $register : null,
+            'student' => $std
         ]);
     }
-
-    public function information(Register $register){
-        return Inertia::render('Register/Show', [
-            'register' => $register->with('students')->get(),
-            'columns' => ['#', 'الاسم', 'المعدل', 'سنة التخرج', 'التولد', 'القسم', 'الدراسة', 'تاريخ التسجيل']
-        ]);
-    }
-
+    
     public function update($id, Request $request){
         $std = Students::where('users_id', Auth::user()->id)->first('id');
         $register = Register::where('students_id', $std)->first();
@@ -69,5 +63,12 @@ class RegisterController extends Controller
         }else{
             return Redirect::route('dashboard');
         }
+    }
+
+    public function information(Register $register){
+        return Inertia::render('Register/Show', [
+            'register' => $register->with('students')->get(),
+            'columns' => ['#', 'الاسم', 'المعدل', 'سنة التخرج', 'التولد', 'القسم', 'الدراسة', 'تاريخ التسجيل']
+        ]);
     }
 }
