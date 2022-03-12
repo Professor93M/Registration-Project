@@ -16,7 +16,7 @@ class RegisterController extends Controller
         Register::where('students_id', $student->id)->first() ? $reg = true : $reg = false;
         if(!$reg){
             return Inertia::render('Register/Create', [
-                'students' => $student
+                'student' => $student
             ]);
         }else{
             return Redirect::back()->with('success', ['icon' => 'warning' ,'title' => 'انتباه', 'message' => 'لايمكنك دخول هذه الصفحة']);
