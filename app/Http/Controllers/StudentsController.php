@@ -56,7 +56,7 @@ class StudentsController extends Controller
         $request->validate([
             'fullname' => 'required|min:10',
             'DOB' => 'required|date',
-            'year' => 'required|date_format:Y',
+            'year' => 'required',
             'gender' => 'required',
             'n_lessons' => 'required|numeric',
             'sum' => 'required|numeric',
