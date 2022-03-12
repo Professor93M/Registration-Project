@@ -6,18 +6,19 @@ export const Container = {
         opacity: 1,
         transition: {
             // delay: 0.5,
-            duration: 0.5,
+            duration: 1,
             ease: "easeInOut",
-            staggerChildren: 1,
-            delayChildren: 0.5,
             when: "beforeChildren",
+            staggerChildren: 0.1,
+            delayChildren: 1,
         },
     },
 };
+
 export const SlideDown = {
     hidden: {
         opacity: 0,
-        y: -20,
+        y: -50,
     },
     show: {
         opacity: 1,
@@ -34,14 +35,13 @@ export const SlideDown = {
 export const FadeIn = {
     hidden: {
         opacity: 0,
-        y: -20,
     },
     show: {
         opacity: 1,
-        y: 0,
+
         transition: {
-            delay: 0.2,
-            duration: 0.6,
+            delay: 1,
+            duration: 1,
             ease: "easeOut",
         },
     },
@@ -50,7 +50,7 @@ export const FadeIn = {
 export const SlideUp = {
     hidden: {
         opacity: 0,
-        y: 20,
+        y: 50,
     },
     show: {
         opacity: 1,
@@ -59,6 +59,24 @@ export const SlideUp = {
             delay: 0.2,
             duration: 0.6,
             ease: "easeOut",
+            when: "beforeChildren",
+            staggerChildren: 0.5,
+        },
+    },
+};
+
+export const SlideRight = {
+    hidden: {
+        x: 1000,
+    },
+    show: {
+        x: 0,
+        transition: {
+            delay: 1.4,
+            duration: 1,
+            ease: "easeInOut",
+            type: "spring",
+            stiffness: 120,
         },
     },
 };

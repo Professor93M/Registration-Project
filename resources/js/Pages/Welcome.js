@@ -15,13 +15,13 @@ export default function Welcome(props) {
                     className="max-w-6xl mx-auto sm:px-6 lg:px-8"
                 >
                     <motion.div
-                        variants={FadeIn}
+                        variants={SlideDown}
                         initial="hidden"
                         animate="show"
                         className="text-center"
                     >
                         <motion.h2
-                            variants={FadeIn}
+                            variants={SlideDown}
                             initial="hidden"
                             animate="show"
                             className="text-3xl leading-9 font-extrabold font-tajawal-bold tracking-tight  sm:text-4xl sm:leading-10"
@@ -29,7 +29,7 @@ export default function Welcome(props) {
                             مرحباً بك في نظام التسجيل الالكتروني
                         </motion.h2>
                         <motion.p
-                            variants={FadeIn}
+                            variants={SlideDown}
                             initial="hidden"
                             animate="show"
                             className="mt-3 mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl lg:mx-0 lg:text-2xl xl:text-3xl"

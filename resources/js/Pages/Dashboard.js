@@ -4,20 +4,13 @@ import { Head } from "@inertiajs/inertia-react";
 import StageCard from "@/Components/StageCard";
 
 export default function Dashboard(props) {
-    const [active, setActive] = useState(false);
-
-    // useEffect(() => {
-    //     if (props.auth.user) {
-    //         setActive(true);
-    //     }
-    // }, []);
-
+    console.log(props);
     const stages = [
         {
             title: "المرحلة الاولى",
             description:
                 "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
-            link: "/register/stage/1",
+            link: "/create",
             active: true,
             className: "bg-blue-400 border-b border-gray-200",
         },

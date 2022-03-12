@@ -13,9 +13,11 @@ import {
     SlideUp,
     SlideDown,
 } from "@/animations";
+import { Inertia } from "@inertiajs/inertia";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
+        name: "",
         mobile: "",
         password: "",
         password_confirmation: "",
@@ -38,8 +40,11 @@ export default function Register() {
 
     const submit = (e) => {
         e.preventDefault();
-
         post(route("register"));
+    };
+
+    const handleClick = () => {
+        Inertia.get(route("login"));
     };
 
     return (
@@ -120,29 +125,22 @@ export default function Register() {
                     animate="show"
                     className="flex items-center justify-between mt-4"
                 >
-                    <Link
-                        href={route("login")}
-                        className="mt-3
-                            hover:text-gray-900 
-                             hover:bg-blue-300 
-                              focus:outline-none 
-                              focus:shadow-outline-blue
-                               focus:text-gray-900 
-                               transition duration-150 
-                               ease-in-out bg-blue-400 text-gray-100 font-bold rounded-md px-4 py-2 ml-3 shadow-sm"
+                    <Button
+                        as={Link}
+                        variants={FadeIn}
+                        animate="show"
+                        initial="hidden"
+                        type="button"
+                        handleClick={handleClick}
+                        className=" border
+                                                
+                         border-slate-500 px-3 py-1 bg-green-400 rounded text-slate-100"
                     >
                         تسجيل دخول
-                    </Link>
+                    </Button>
 
                     <Button
-                        className="mt-3
-                            hover:text-gray-900 
-                             hover:bg-green-300 
-                              focus:outline-none 
-                              focus:shadow-outline-blue
-                               focus:text-gray-900 
-                               transition duration-150 
-                               ease-in-out bg-green-400 text-gray-500 font-bold rounded-md px-4 py-3 ml-3 shadow-sm"
+                        className=" border border-slate-500 px-3 py-1 bg-blue-400 rounded text-slate-100"
                         processing={processing}
                     >
                         تسجيل

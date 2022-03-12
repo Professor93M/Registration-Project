@@ -1,22 +1,25 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { SlideRight } from "@/animations";
 
 export default function Button({
     type = "submit",
     className = "",
     processing,
     children,
+    handleClick,
 }) {
     return (
-        <button
+        <motion.button
+            variants={SlideRight}
+            initial="hidden"
+            animate="show"
             type={type}
-            className={
-                `inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150 ${
-                    processing && "opacity-25"
-                } ` + className
-            }
             disabled={processing}
+            className={className}
+            onClick={handleClick}
         >
             {children}
-        </button>
+        </motion.button>
     );
 }
