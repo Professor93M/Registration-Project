@@ -24,11 +24,11 @@ class StudentsController extends Controller
             'fullname' => 'required|min:10',
             'DOB' => 'required|date',
             'year' => 'required',
-            'gender' => 'required|numeric',
+            'gender' => 'required',
             'n_lessons' => 'required|numeric',
             'sum' => 'required|numeric',
-            'round' => 'required|numeric',
-            'branch' => 'required|numeric',
+            'round' => 'required',
+            'branch' => 'required',
         ]);
 
         Students::create([
@@ -57,11 +57,11 @@ class StudentsController extends Controller
             'fullname' => 'required|min:10',
             'DOB' => 'required|date',
             'year' => 'required|date_format:Y',
-            'gender' => 'required|numeric',
+            'gender' => 'required',
             'n_lessons' => 'required|numeric',
             'sum' => 'required|numeric',
-            'round' => 'required|numeric',
-            'branch' => 'required|numeric',
+            'round' => 'required',
+            'branch' => 'required',
         ]);
         if($request->fullname !== $student->fullname || $request->DOB !== $student->DOB || 
         $request->year !== $student->year || $request->gender !== $student->gender ||
