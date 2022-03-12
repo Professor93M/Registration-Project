@@ -22,7 +22,7 @@ class StudentsController extends Controller
     public function store(Request $request){
         $request->validate([
             'fullname' => 'required|min:10',
-            'DOB' => 'required|date',
+            'dob' => 'required|date',
             'year' => 'required',
             'gender' => 'required',
             'n_lessons' => 'required|numeric',
