@@ -3283,19 +3283,19 @@ function Dashboard(props) {
   var stages = [{
     title: "المرحلة الاولى",
     description: props.stage1 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح" : "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
-    link: props.stage1 ? "/show/".concat(props.auth.user.id) : "/create",
+    link: props.stage1 ? "/show" : "/create",
     active: true,
     className: "bg-blue-300 border-b border-gray-200"
   }, {
     title: "المرحلة الثانية",
     description: props.stage2 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح" : "في هذه المرحلة عليك تحديد القسم والدراسة التي ترغب بالتسجيل فيها",
-    link: props.stage1 ? "/dept" : "/show/".concat(props.auth.user.id),
+    link: props.stage1 ? "/dept" : "/show",
     active: props.stage1 ? true : false,
     className: "bg-orange-300 border-b border-gray-200"
   }, {
     title: "المرحلة الثالثة",
     description: props.stage2 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح" : "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
-    link: props.stage2 ? "/show/".concat(props.auth.user.id) : "/create",
+    link: props.stage2 ? "/show" : "/create",
     active: props.stage2 ? true : false,
     className: "bg-orange-300 border-b border-gray-200"
   }];
@@ -3346,9 +3346,144 @@ function Dashboard(props) {
 /*!***********************************************!*\
   !*** ./resources/js/Pages/Register/Create.js ***!
   \***********************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
+/* harmony import */ var _animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/animations */ "./resources/js/animations.js");
+/* harmony import */ var _Components_FormItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/FormItem */ "./resources/js/Components/FormItem.js");
+/* harmony import */ var _Components_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.js");
+/* harmony import */ var _Components_Combo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Combo */ "./resources/js/Components/Combo.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+
+
+
+
+
+
+
+
+
+var Create = function Create(props) {
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+    dept: "",
+    type: ""
+  }),
+      data = _useForm.data,
+      setData = _useForm.setData,
+      post = _useForm.post,
+      processing = _useForm.processing,
+      errors = _useForm.errors,
+      reset = _useForm.reset;
+
+  var dept = [{
+    name: "هندسة مدني"
+  }, {
+    name: "هندسة تقنيات الحاسوب"
+  }, {
+    name: "علوم الحاسبات"
+  }, {
+    name: "قانون"
+  }, {
+    name: "محاسبة"
+  }, {
+    name: "إدارة واقتصاد"
+  }, {
+    name: "آداب انكليزي"
+  }];
+  var type = [{
+    name: "صباحي"
+  }, {
+    name: "مسائي"
+  }];
+
+  var _handleChange = function handleChange(e) {
+    setData(e.target.name, e.target.type === "checkbox" ? e.target.checked : e.target.value);
+  };
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    console.log(data);
+    post("/store");
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    auth: props.auth,
+    errors: props.errors,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, {
+      title: "Dashboard"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      className: "py-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: "max-w-6xl text-center mx-auto sm:px-6 lg:px-8",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          className: "bg-white overflow-hidden shadow-xl sm:rounded-lg",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(framer_motion__WEBPACK_IMPORTED_MODULE_8__.motion.div, {
+            variants: _animations__WEBPACK_IMPORTED_MODULE_3__.SlideUp,
+            initial: "hidden",
+            animate: "show",
+            className: "p-6",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(framer_motion__WEBPACK_IMPORTED_MODULE_8__.motion.h1, {
+              className: "text-3xl font-bold leading-tight text-gray-900",
+              children: "\u062A\u0633\u062C\u064A\u0644 \u0628\u064A\u0627\u0646\u0627\u062A\u0643 \u0641\u064A \u0627\u0644\u0642\u0633\u0645"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(framer_motion__WEBPACK_IMPORTED_MODULE_8__.motion.p, {
+              className: "mt-4 text-lg leading-relaxed text-gray-600",
+              children: "\u064A\u0631\u062C\u0649 \u0627\u0644\u062A\u0623\u0643\u062F \u0645\u0646 \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u0627\u0644\u0645\u062F\u062E\u0644\u0629 \u0642\u0628\u0644 \u0627\u0644\u0627\u0631\u0633\u0627\u0644"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            className: "w-full bg-white py-8 rounded-lg",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "w-full px-6",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                className: "-mx-3",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
+                  className: "px-3 grid grid-cols-4 items-center justify-center gap-x-3",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                      className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                      name: "dept",
+                      label: "\u0627\u0644\u0642\u0633\u0645",
+                      options: dept,
+                      handleChange: function handleChange(e) {
+                        _handleChange(e);
+                      }
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                      className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                      name: "type",
+                      label: "\u0627\u0644\u062F\u0631\u0627\u0633\u0629",
+                      options: type,
+                      value: props.student.dob > "01/01/1990" ? "مسائي" : "صباحي",
+                      handleChange: function handleChange(e) {
+                        _handleChange(e);
+                      }
+                    })
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                  handleClick: handleSubmit,
+                  className: " mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100",
+                  children: "\u062A\u0633\u062C\u064A\u0644"
+                })]
+              })
+            })
+          })]
+        })
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Create);
 
 /***/ }),
 
