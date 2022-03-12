@@ -39,7 +39,8 @@ export default function Button({
                         initial="hidden"
                         animate="show"
                         key={index}
-                        value={index}
+                        value={option.value}
+                        label={option.value}
                     >
                         {option.name}
                     </motion.option>

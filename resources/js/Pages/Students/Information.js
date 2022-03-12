@@ -9,23 +9,45 @@ import Combo from "@/Components/Combo";
 
 const Information = (props) => {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: "",
+        fullname: "",
         address: "",
         DOB: "",
         gender: "",
         phone: "",
         email: "",
         avg: "",
+        branch: "",
         sum: "",
-        numberOfLessons: "",
+        n_lessons: "",
+        round: "",
+        year: "",
     });
 
     const gender = [
         {
-            name: "ذكر",
+            value: "ذكر",
         },
         {
-            name: "أنثى",
+            value: "أنثى",
+        },
+    ];
+    const branch = [
+        {
+            value: "علمي",
+        },
+        {
+            value: "ادبي",
+        },
+    ];
+    const round = [
+        {
+            value: "الاول",
+        },
+        {
+            value: "الثاني",
+        },
+        {
+            value: "الدور التكميلي",
         },
     ];
 
@@ -38,7 +60,8 @@ const Information = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post();
+        console.log(data);
+        post("/store");
     };
 
     return (
@@ -66,12 +89,12 @@ const Information = (props) => {
                                 <div className="-mx-3">
                                     <form className="px-3 grid grid-cols-4 items-center justify-center gap-x-3">
                                         <FormItem
-                                            name="name"
+                                            name="fullname"
                                             type="text"
                                             className="col-span-2"
                                             label="الاسم الرباعي واللقب"
                                             handleChange={handleChange}
-                                            value={data.name}
+                                            value={data.fullname}
                                         />
                                         <FormItem
                                             name="address"
@@ -115,18 +138,43 @@ const Information = (props) => {
                                             handleChange={handleChange}
                                             value={data.phone}
                                         />
+                                        <FormItem>
+                                            <Combo
+                                                className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                name="branch"
+                                                add={"true"}
+                                                label="الفرع"
+                                                options={branch}
+                                                handleChange={(e) => {
+                                                    handleChange(e);
+                                                }}
+                                            />
+                                        </FormItem>
+                                        <FormItem>
+                                            <Combo
+                                                className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                name="round"
+                                                add={"true"}
+                                                label="الدور"
+                                                options={round}
+                                                handleChange={(e) => {
+                                                    handleChange(e);
+                                                }}
+                                            />
+                                        </FormItem>
                                         <FormItem
                                             name="sum"
                                             type="number"
                                             label="المجموع"
                                             handleChange={handleChange}
+                                            value={data.sum}
                                         />
                                         <FormItem
-                                            name="numberOfLessons"
+                                            name="n_lessons"
                                             type="number"
                                             label="عدد الدروس"
                                             handleChange={handleChange}
-                                            value={data.numberOfLessons}
+                                            value={data.n_lessons}
                                         />
                                         <FormItem
                                             name="avg"
@@ -134,6 +182,13 @@ const Information = (props) => {
                                             label="المعدل"
                                             handleChange={handleChange}
                                             value={data.avg}
+                                        />
+                                        <FormItem
+                                            name="year"
+                                            type="number"
+                                            label="سنة التخرج"
+                                            handleChange={handleChange}
+                                            value={data.year}
                                         />
                                     </form>
 

@@ -15,6 +15,7 @@ export default function Button({
             initial="hidden"
             animate="show"
             type={type}
+            disabled={processing}
             className={className}
             onClick={handleClick}
         >

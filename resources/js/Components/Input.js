@@ -24,6 +24,7 @@ export default function Input({
 
     return (
         <motion.input
+            ref={input}
             variants={FadeIn}
             animate="show"
             initial="hidden"
