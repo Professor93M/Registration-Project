@@ -22,7 +22,7 @@ export default function Dashboard(props) {
             description: props.stage1
                 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح"
                 : "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
-            link: props.stage1 ? `/show/${props.auth.user.id}` : "/create",
+            link: props.stage1 ? `/show` : "/create",
             active: true,
             className: "bg-blue-300 border-b border-gray-200",
         },
@@ -31,7 +31,7 @@ export default function Dashboard(props) {
             description: props.stage2
                 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح"
                 : "في هذه المرحلة عليك تحديد القسم والدراسة التي ترغب بالتسجيل فيها",
-            link: props.stage1 ? "/dept" : `/show/${props.auth.user.id}`,
+            link: props.stage1 ? "/dept" : `/show`,
             active: props.stage1 ? true : false,
             className: "bg-orange-300 border-b border-gray-200",
         },
@@ -40,7 +40,7 @@ export default function Dashboard(props) {
             description: props.stage2
                 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح"
                 : "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
-            link: props.stage2 ? `/show/${props.auth.user.id}` : "/create",
+            link: props.stage2 ? `/show` : "/create",
             active: props.stage2 ? true : false,
             className: "bg-orange-300 border-b border-gray-200",
         },
