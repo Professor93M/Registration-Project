@@ -41,7 +41,6 @@ class StudentsController extends Controller
             'avg' => $request->sum/$request->n_lessons,
             'round' => $request->round,
             'branch' => $request->branch,
-            'users_id' => Auth::user()->id
         ]);
 
         return Redirect::route('dashboard')->with('success', ['icon' => 'success' ,'title' => 'نجحت العملية', 'message' => 'تم خزن بياناتك']);
@@ -51,5 +50,37 @@ class StudentsController extends Controller
         return Inertia::render('Students/Show', [
             'student' => Students::findOrFail($id)
         ]);
+    }
+
+    public function update(Students $student, Request $request){
+        $request->validate([
+            'fullname' => 'required|min:10',
+            'DOB' => 'required|date',
+            'year' => 'required|date_format:Y',
+            'gender' => 'required|numeric',
+            'n_lessons' => 'required|numeric',
+            'sum' => 'required|numeric',
+            'round' => 'required|numeric',
+            'branch' => 'required|numeric',
+        ]);
+        if($request->fullname !== $student->fullname || $request->DOB !== $student->DOB || 
+        $request->year !== $student->year || $request->gender !== $student->gender ||
+        $request->n_lessons !== $student->n_lessons || $request->sum !== $student->sum ||
+        $request->round !== $student->round || $request->branch !== $student->branch){
+            $student->update([
+                'fullname' => $request->fullname,
+                'DOB' => $request->dob,
+                'year' => $request->year,
+                'gender' => $request->gender,
+                'n_lessons' => $request->n_lessons,
+                'sum' => $request->sum,
+                'avg' => $request->sum/$request->n_lessons,
+                'round' => $request->round,
+                'branch' => $request->branch,
+                'users_id' => Auth::user()->id
+            ]);
+            return Redirect::route('dashboard')->with('success', ['icon' => 'success' ,'title' => 'نجحت العملية', 'message' => 'تم تحديث بياناتك']);
+        }
+        return Redirect::route('dashboard');
     }
 }
