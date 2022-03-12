@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Register;
+use App\Models\Students;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class RegisterController extends Controller
@@ -13,6 +16,8 @@ class RegisterController extends Controller
         Register::where('students_id', $student->id)->first() ? $reg = true : $reg = false;
         if(!$reg){
             return Insetia::render('Register/Create');
+        }else{
+            return Redirect::back()->with('success', ['icon' => 'warning' ,'title' => 'انتباه', 'message' => 'لايمكنك دخول هذه الصفحة']);
         }
     }
 
@@ -31,7 +36,8 @@ class RegisterController extends Controller
         return Redirect::route('dashboard')->with('success', ['icon' => 'success' ,'title' => 'نجحت العملية', 'message' => 'تم اختيار القسم']);
     }
 
-    public function show(Register $register){
+    public function show($id){
+        $register = Students::where();
         return Inertia::render('Register/Show', [
             'register' => $register,
         ]);
