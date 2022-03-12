@@ -11,7 +11,7 @@ const Information = (props) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         fullname: "",
         address: "",
-        DOB: "",
+        dob: "",
         gender: "",
         phone: "",
         email: "",
@@ -25,29 +25,29 @@ const Information = (props) => {
 
     const gender = [
         {
-            value: "ذكر",
+            name: "ذكر",
         },
         {
-            value: "أنثى",
+            name: "أنثى",
         },
     ];
     const branch = [
         {
-            value: "علمي",
+            name: "علمي",
         },
         {
-            value: "ادبي",
+            name: "ادبي",
         },
     ];
     const round = [
         {
-            value: "الاول",
+            name: "الاول",
         },
         {
-            value: "الثاني",
+            name: "الثاني",
         },
         {
-            value: "الدور التكميلي",
+            name: "الدور التكميلي",
         },
     ];
 
@@ -105,11 +105,11 @@ const Information = (props) => {
                                             value={data.address}
                                         />
                                         <FormItem
-                                            name="DOB"
+                                            name="dob"
                                             type="date"
                                             label="تاريخ الميلاد"
                                             handleChange={handleChange}
-                                            value={data.DOB}
+                                            value={data.dob}
                                         />
                                         <FormItem>
                                             <Combo
@@ -180,6 +180,8 @@ const Information = (props) => {
                                             name="avg"
                                             type="number"
                                             label="المعدل"
+                                            max="100"
+                                            min="50"
                                             handleChange={handleChange}
                                             value={data.avg}
                                         />
@@ -194,7 +196,7 @@ const Information = (props) => {
 
                                     <Button
                                         handleClick={handleSubmit}
-                                        className=" mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-200"
+                                        className=" mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100"
                                     >
                                         تسجيل
                                     </Button>

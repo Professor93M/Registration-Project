@@ -2243,8 +2243,8 @@ function Button(_ref) {
           variants: _animations__WEBPACK_IMPORTED_MODULE_1__.SlideUp,
           initial: "hidden",
           animate: "show",
-          value: option.value,
-          label: option.value,
+          value: option.name,
+          label: option.name,
           children: option.name
         }, index);
       })
@@ -3241,6 +3241,7 @@ function Dashboard(props) {
   var stages = [{
     title: "المرحلة الاولى",
     description: "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
+    studentDesc: "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح",
     link: "/create",
     active: true,
     className: "bg-blue-400 border-b border-gray-200"
@@ -3284,7 +3285,7 @@ function Dashboard(props) {
               children: stages.map(function (stage) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_StageCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
                   title: stage.title,
-                  description: stage.description,
+                  description: props.student ? stage.studentDesc : stage.description,
                   link: stage.link,
                   active: stage.active,
                   className: stage.className
@@ -3355,7 +3356,7 @@ var Information = function Information(props) {
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
     fullname: "",
     address: "",
-    DOB: "",
+    dob: "",
     gender: "",
     phone: "",
     email: "",
@@ -3374,21 +3375,21 @@ var Information = function Information(props) {
       reset = _useForm.reset;
 
   var gender = [{
-    value: "ذكر"
+    name: "ذكر"
   }, {
-    value: "أنثى"
+    name: "أنثى"
   }];
   var branch = [{
-    value: "علمي"
+    name: "علمي"
   }, {
-    value: "ادبي"
+    name: "ادبي"
   }];
   var round = [{
-    value: "الاول"
+    name: "الاول"
   }, {
-    value: "الثاني"
+    name: "الثاني"
   }, {
-    value: "الدور التكميلي"
+    name: "الدور التكميلي"
   }];
 
   var _handleChange = function handleChange(e) {
@@ -3447,11 +3448,11 @@ var Information = function Information(props) {
                     handleChange: _handleChange,
                     value: data.address
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "DOB",
+                    name: "dob",
                     type: "date",
                     label: "\u062A\u0627\u0631\u064A\u062E \u0627\u0644\u0645\u064A\u0644\u0627\u062F",
                     handleChange: _handleChange,
-                    value: data.DOB
+                    value: data.dob
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
                       className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
@@ -3514,6 +3515,8 @@ var Information = function Information(props) {
                     name: "avg",
                     type: "number",
                     label: "\u0627\u0644\u0645\u0639\u062F\u0644",
+                    max: "100",
+                    min: "50",
                     handleChange: _handleChange,
                     value: data.avg
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -3525,7 +3528,7 @@ var Information = function Information(props) {
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
                   handleClick: handleSubmit,
-                  className: " mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-200",
+                  className: " mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100",
                   children: "\u062A\u0633\u062C\u064A\u0644"
                 })]
               })

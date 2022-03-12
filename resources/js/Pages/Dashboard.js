@@ -10,6 +10,7 @@ export default function Dashboard(props) {
             title: "المرحلة الاولى",
             description:
                 "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
+            studentDesc: "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح",
             link: "/create",
             active: true,
             className: "bg-blue-400 border-b border-gray-200",
@@ -52,7 +53,11 @@ export default function Dashboard(props) {
                                     <StageCard
                                         key={stage.title}
                                         title={stage.title}
-                                        description={stage.description}
+                                        description={
+                                            props.student
+                                                ? stage.studentDesc
+                                                : stage.description
+                                        }
                                         link={stage.link}
                                         active={stage.active}
                                         className={stage.className}
