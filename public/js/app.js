@@ -3281,23 +3281,22 @@ function Dashboard(props) {
   }, [props.success]);
   var stages = [{
     title: "المرحلة الاولى",
-    description: "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
-    studentDesc: "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح",
-    link: "/create",
+    description: props.stage1 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح" : "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
+    link: props.stage1 ? "/show/".concat(props.auth.user.id) : "/create",
     active: true,
-    className: "bg-blue-400 border-b border-gray-200"
+    className: "bg-blue-300 border-b border-gray-200"
   }, {
     title: "المرحلة الثانية",
-    description: "في هذه المرحلة عليك تحديد القسم الذي تريد الانضمام له والدراسة التي تريد الانضمام لها",
-    link: "/register/stage/2",
+    description: props.stage2 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح" : "في هذه المرحلة عليك تحديد القسم والدراسة التي ترغب بالتسجيل فيها",
+    link: props.stage1 ? "/dept" : "/show/".concat(props.auth.user.id),
     active: props.stage1 ? true : false,
     className: "bg-orange-300 border-b border-gray-200"
   }, {
     title: "المرحلة الثالثة",
-    description: "هذه المرحلة سيتم عرض معلومات القبول الخاص بك في الجامعه والقسم الذين تريد الانضمام لهم",
-    link: "/register/stage/3",
+    description: props.stage2 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح" : "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
+    link: props.stage2 ? "/show/".concat(props.auth.user.id) : "/create",
     active: props.stage2 ? true : false,
-    className: "bg-green-400 border-b border-gray-200"
+    className: "bg-orange-300 border-b border-gray-200"
   }];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
     auth: props.auth,
@@ -3325,11 +3324,11 @@ function Dashboard(props) {
               className: "bg-red-400 overflow-hidden w-3/4 mx-auto grid grid-cols-3 shadow-sm sm:rounded-lg",
               children: stages.map(function (stage) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_StageCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                  link: stage.link,
                   title: stage.title,
-                  description: props.student ? stage.studentDesc : stage.description,
-                  link: props.active ? "/show/".concat(props.auth.user.id) : stage.link,
                   active: stage.active,
-                  className: stage.className
+                  className: stage.className,
+                  description: stage.description
                 }, stage.title);
               })
             })
