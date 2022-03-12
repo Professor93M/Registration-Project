@@ -54,7 +54,8 @@ class StudentsController extends Controller
         ]);
     }
 
-    public function update(Students $student, Request $request){
+    public function update($id, Request $request){
+        $student = Students::where('users_id', $id)->first();
         $request->validate([
             'fullname' => 'required|min:10',
             'dob' => 'required|date',
