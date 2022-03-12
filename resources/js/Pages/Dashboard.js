@@ -2,9 +2,20 @@ import React, { useEffect, useState } from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Head } from "@inertiajs/inertia-react";
 import StageCard from "@/Components/StageCard";
+import Toast from "@/Components/Toast";
 
 export default function Dashboard(props) {
     console.log(props);
+
+    useEffect(() => {
+        props.success
+            ? Toast.fire({
+                  icon: props.success.icon,
+                  message: props.success.message,
+                  title: props.success.title,
+              })
+            : null;
+    }, [props.success]);
     const stages = [
         {
             title: "المرحلة الاولى",
