@@ -47,15 +47,15 @@ class StudentsController extends Controller
         return Redirect::route('dashboard')->with('success', ['icon' => 'success' ,'title' => 'نجحت العملية', 'message' => 'تم خزن بياناتك']);
     }
     
-    public function show($id){
-        $student = Students::where('users_id', $id)->first();
+    public function show(){
+        $student = Students::where('users_id', Auth::user()->id)->first();
         return Inertia::render('Students/Show', [
             'student' => $student
         ]);
     }
 
-    public function update($id, Request $request){
-        $student = Students::where('users_id', $id)->first();
+    public function update(Request $request){
+        $student = Students::where('users_id', Auth::user()->id)->first();
         $request->validate([
             'fullname' => 'required|min:10',
             'dob' => 'required|date',
