@@ -41,6 +41,7 @@ class StudentsController extends Controller
             'avg' => $request->sum/$request->n_lessons,
             'round' => $request->round,
             'branch' => $request->branch,
+            'users_id' => Auth::user()->id
         ]);
 
         return Redirect::route('dashboard')->with('success', ['icon' => 'success' ,'title' => 'نجحت العملية', 'message' => 'تم خزن بياناتك']);
