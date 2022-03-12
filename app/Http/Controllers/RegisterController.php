@@ -15,7 +15,7 @@ class RegisterController extends Controller
         $student = Students::where('users_id', Auth::user()->id)->first();
         Register::where('students_id', $student->id)->first() ? $reg = true : $reg = false;
         if(!$reg){
-            return Insetia::render('Register/Create');
+            return Inertia::render('Register/Create');
         }else{
             return Redirect::back()->with('success', ['icon' => 'warning' ,'title' => 'انتباه', 'message' => 'لايمكنك دخول هذه الصفحة']);
         }
@@ -37,7 +37,9 @@ class RegisterController extends Controller
     }
 
     public function show($id){
-        $register = Students::where();
+        $register = Register::whereHas('students', function($reg){
+            dd($reg);
+        });
         return Inertia::render('Register/Show', [
             'register' => $register,
         ]);
