@@ -25,15 +25,17 @@ export default function Dashboard(props) {
             link: props.stage1 ? `/show` : "/create",
             active: true,
             className: "bg-blue-300 border-b border-gray-200",
+            duration: "1000",
         },
         {
             title: "المرحلة الثانية",
             description: props.stage2
-                ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح"
+                ? "لقد قمت بإختيار القسم بنجاح"
                 : "في هذه المرحلة عليك تحديد القسم والدراسة التي ترغب بالتسجيل فيها",
-            link: props.stage1 ? "/dept" : `/show`,
+            link: !props.stage1 ? "/dept" : `/dshow`,
             active: props.stage1 ? true : false,
             className: "bg-orange-300 border-b border-gray-200",
+            duration: "3000",
         },
         {
             title: "المرحلة الثالثة",
@@ -43,6 +45,7 @@ export default function Dashboard(props) {
             link: props.stage2 ? `/show` : "/create",
             active: props.stage2 ? true : false,
             className: "bg-orange-300 border-b border-gray-200",
+            duration: "5000",
         },
     ];
     return (
@@ -61,7 +64,7 @@ export default function Dashboard(props) {
                             </p>
                         </div>
                         <div className="w-full bg-white py-8 rounded-lg">
-                            <div className="bg-red-400 overflow-hidden w-3/4 mx-auto grid grid-cols-3 shadow-sm sm:rounded-lg">
+                            <div className="w-3/4 mx-auto grid grid-cols-3 shadow-sm sm:rounded-lg">
                                 {stages.map((stage) => (
                                     <StageCard
                                         key={stage.title}
@@ -70,6 +73,7 @@ export default function Dashboard(props) {
                                         active={stage.active}
                                         className={stage.className}
                                         description={stage.description}
+                                        duration={stage.duration}
                                     />
                                 ))}
                             </div>

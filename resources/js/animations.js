@@ -32,21 +32,6 @@ export const SlideDown = {
     },
 };
 
-export const FadeIn = {
-    hidden: {
-        opacity: 0,
-    },
-    show: {
-        opacity: 1,
-
-        transition: {
-            delay: 1,
-            duration: 1,
-            ease: "easeOut",
-        },
-    },
-};
-
 export const SlideUp = {
     hidden: {
         opacity: 0,
@@ -61,6 +46,55 @@ export const SlideUp = {
             ease: "easeOut",
             when: "beforeChildren",
             staggerChildren: 0.5,
+        },
+    },
+};
+export const Down = {
+    hidden: {
+        opacity: 0,
+        y: -50,
+    },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            delay: 2,
+            duration: 0.6,
+            ease: "easeOut",
+            staggerChildren: 0.5,
+        },
+    },
+};
+
+export const Up = {
+    hidden: {
+        opacity: 0,
+        y: 50,
+    },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            delay: 1.5,
+            duration: 0.6,
+            ease: "easeOut",
+            when: "beforeChildren",
+            staggerChildren: 0.5,
+        },
+    },
+};
+
+export const FadeIn = {
+    hidden: {
+        opacity: 0,
+    },
+    show: {
+        opacity: 1,
+
+        transition: {
+            delay: 1,
+            duration: 1,
+            ease: "easeOut",
         },
     },
 };

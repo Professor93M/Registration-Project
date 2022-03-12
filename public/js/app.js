@@ -2645,9 +2645,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/animations */ "./resources/js/animations.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 
 
 
@@ -2659,13 +2675,30 @@ var StageCard = function StageCard(_ref) {
       active = _ref.active,
       className = _ref.className,
       link = _ref.link;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_2__.useState(false),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      visible = _React$useState2[0],
+      setVisible = _React$useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    setTimeout(function () {
+      setVisible(true);
+    }, 1000);
+  }, [visible]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     href: link,
-    className: "".concat(active ? className : "pointer-events-none bg-gray-300 text-gray-400", " p-6 col-span-1"),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
-      className: "text-3xl font-bold leading-tight text-gray-900",
+    className: "".concat(active ? className : "pointer-events-none bg-gray-300 text-gray-400", " p-6 col-span-1 transform ").concat(visible ? "opacity-100 transition-opacity duration-[200ms] ease-in-out" : "opacity-0", " "),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.h1, {
+      variants: _animations__WEBPACK_IMPORTED_MODULE_0__.Up,
+      initial: "hidden",
+      animate: "show",
+      className: "text-3xl  font-bold leading-tight text-gray-900",
       children: title
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.p, {
+      variants: _animations__WEBPACK_IMPORTED_MODULE_0__.Down,
+      initial: "hidden",
+      animate: "show",
       className: "mt-4 text-lg leading-relaxed text-gray-600",
       children: description
     })]
@@ -3285,19 +3318,22 @@ function Dashboard(props) {
     description: props.stage1 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح" : "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
     link: props.stage1 ? "/show" : "/create",
     active: true,
-    className: "bg-blue-300 border-b border-gray-200"
+    className: "bg-blue-300 border-b border-gray-200",
+    duration: "1000"
   }, {
     title: "المرحلة الثانية",
-    description: props.stage2 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح" : "في هذه المرحلة عليك تحديد القسم والدراسة التي ترغب بالتسجيل فيها",
-    link: props.stage1 ? "/dept" : "/show",
+    description: props.stage2 ? "لقد قمت بإختيار القسم بنجاح" : "في هذه المرحلة عليك تحديد القسم والدراسة التي ترغب بالتسجيل فيها",
+    link: !props.stage1 ? "/dept" : "/dshow",
     active: props.stage1 ? true : false,
-    className: "bg-orange-300 border-b border-gray-200"
+    className: "bg-orange-300 border-b border-gray-200",
+    duration: "3000"
   }, {
     title: "المرحلة الثالثة",
     description: props.stage2 ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح" : "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
     link: props.stage2 ? "/show" : "/create",
     active: props.stage2 ? true : false,
-    className: "bg-orange-300 border-b border-gray-200"
+    className: "bg-orange-300 border-b border-gray-200",
+    duration: "5000"
   }];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
     auth: props.auth,
@@ -3322,14 +3358,15 @@ function Dashboard(props) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "w-full bg-white py-8 rounded-lg",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-              className: "bg-red-400 overflow-hidden w-3/4 mx-auto grid grid-cols-3 shadow-sm sm:rounded-lg",
+              className: "w-3/4 mx-auto grid grid-cols-3 shadow-sm sm:rounded-lg",
               children: stages.map(function (stage) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_StageCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
                   link: stage.link,
                   title: stage.title,
                   active: stage.active,
                   className: stage.className,
-                  description: stage.description
+                  description: stage.description,
+                  duration: stage.duration
                 }, stage.title);
               })
             })
@@ -3415,7 +3452,7 @@ var Create = function Create(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     console.log(data);
-    post("/store");
+    post("/save");
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -3465,7 +3502,6 @@ var Create = function Create(props) {
                       name: "type",
                       label: "\u0627\u0644\u062F\u0631\u0627\u0633\u0629",
                       options: type,
-                      value: props.student.dob > "01/01/1990" ? "مسائي" : "صباحي",
                       handleChange: function handleChange(e) {
                         _handleChange(e);
                       }
@@ -3493,9 +3529,147 @@ var Create = function Create(props) {
 /*!*********************************************!*\
   !*** ./resources/js/Pages/Register/Show.js ***!
   \*********************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
+/* harmony import */ var _animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/animations */ "./resources/js/animations.js");
+/* harmony import */ var _Components_FormItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/FormItem */ "./resources/js/Components/FormItem.js");
+/* harmony import */ var _Components_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.js");
+/* harmony import */ var _Components_Combo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Combo */ "./resources/js/Components/Combo.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+
+
+
+
+
+
+
+
+
+var Show = function Show(props) {
+  console.log(props);
+
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+    dept: props.register.dept || "",
+    type: props.register.type || ""
+  }),
+      data = _useForm.data,
+      setData = _useForm.setData,
+      post = _useForm.post,
+      processing = _useForm.processing,
+      errors = _useForm.errors,
+      reset = _useForm.reset;
+
+  var dept = [{
+    name: "هندسة مدني"
+  }, {
+    name: "هندسة تقنيات الحاسوب"
+  }, {
+    name: "علوم الحاسبات"
+  }, {
+    name: "قانون"
+  }, {
+    name: "محاسبة"
+  }, {
+    name: "إدارة واقتصاد"
+  }, {
+    name: "آداب انكليزي"
+  }];
+  var type = [{
+    name: "صباحي"
+  }, {
+    name: "مسائي"
+  }];
+
+  var _handleChange = function handleChange(e) {
+    setData(e.target.name, e.target.type === "checkbox" ? e.target.checked : e.target.value);
+  };
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    console.log(data);
+    post("/dsave");
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    auth: props.auth,
+    errors: props.errors,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, {
+      title: "Dashboard"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      className: "py-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: "max-w-6xl text-center mx-auto sm:px-6 lg:px-8",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          className: "bg-white overflow-hidden shadow-xl sm:rounded-lg",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(framer_motion__WEBPACK_IMPORTED_MODULE_8__.motion.div, {
+            variants: _animations__WEBPACK_IMPORTED_MODULE_3__.SlideUp,
+            initial: "hidden",
+            animate: "show",
+            className: "p-6",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(framer_motion__WEBPACK_IMPORTED_MODULE_8__.motion.h1, {
+              className: "text-3xl font-bold leading-tight text-gray-900",
+              children: "\u062A\u0633\u062C\u064A\u0644 \u0628\u064A\u0627\u0646\u0627\u062A\u0643 \u0641\u064A \u0627\u0644\u0642\u0633\u0645"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(framer_motion__WEBPACK_IMPORTED_MODULE_8__.motion.p, {
+              className: "mt-4 text-lg leading-relaxed text-gray-600",
+              children: "\u064A\u0631\u062C\u0649 \u0627\u0644\u062A\u0623\u0643\u062F \u0645\u0646 \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u0627\u0644\u0645\u062F\u062E\u0644\u0629 \u0642\u0628\u0644 \u0627\u0644\u0627\u0631\u0633\u0627\u0644"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            className: "w-full bg-white py-8 rounded-lg",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "w-full px-6",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                className: "-mx-3 ",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
+                  className: "px-3 grid grid-cols-2 items-center justify-center gap-x-3",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                      className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                      name: "dept",
+                      label: "\u0627\u0644\u0642\u0633\u0645",
+                      value: data.dept,
+                      options: dept,
+                      handleChange: function handleChange(e) {
+                        _handleChange(e);
+                      }
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                      className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                      name: "type",
+                      label: "\u0627\u0644\u062F\u0631\u0627\u0633\u0629",
+                      options: type,
+                      value: data.type,
+                      handleChange: function handleChange(e) {
+                        _handleChange(e);
+                      }
+                    })
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                  handleClick: handleSubmit,
+                  className: " mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100",
+                  children: "\u062A\u0633\u062C\u064A\u0644"
+                })]
+              })
+            })
+          })]
+        })
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Show);
 
 /***/ }),
 
@@ -4032,10 +4206,12 @@ function Welcome(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Container": () => (/* binding */ Container),
+/* harmony export */   "Down": () => (/* binding */ Down),
 /* harmony export */   "FadeIn": () => (/* binding */ FadeIn),
 /* harmony export */   "SlideDown": () => (/* binding */ SlideDown),
 /* harmony export */   "SlideRight": () => (/* binding */ SlideRight),
-/* harmony export */   "SlideUp": () => (/* binding */ SlideUp)
+/* harmony export */   "SlideUp": () => (/* binding */ SlideUp),
+/* harmony export */   "Up": () => (/* binding */ Up)
 /* harmony export */ });
 var Container = {
   hidden: {
@@ -4069,19 +4245,6 @@ var SlideDown = {
     }
   }
 };
-var FadeIn = {
-  hidden: {
-    opacity: 0
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      delay: 1,
-      duration: 1,
-      ease: "easeOut"
-    }
-  }
-};
 var SlideUp = {
   hidden: {
     opacity: 0,
@@ -4096,6 +4259,52 @@ var SlideUp = {
       ease: "easeOut",
       when: "beforeChildren",
       staggerChildren: 0.5
+    }
+  }
+};
+var Down = {
+  hidden: {
+    opacity: 0,
+    y: -50
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 2,
+      duration: 0.6,
+      ease: "easeOut",
+      staggerChildren: 0.5
+    }
+  }
+};
+var Up = {
+  hidden: {
+    opacity: 0,
+    y: 50
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 1.5,
+      duration: 0.6,
+      ease: "easeOut",
+      when: "beforeChildren",
+      staggerChildren: 0.5
+    }
+  }
+};
+var FadeIn = {
+  hidden: {
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      delay: 1,
+      duration: 1,
+      ease: "easeOut"
     }
   }
 };

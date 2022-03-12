@@ -618,6 +618,9 @@ select {
 .pointer-events-none {
   pointer-events: none;
 }
+.visible {
+  visibility: visible;
+}
 .fixed {
   position: fixed;
 }
@@ -1231,6 +1234,9 @@ select {
 .opacity-100 {
   opacity: 1;
 }
+.opacity-10 {
+  opacity: 0.1;
+}
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
@@ -1279,6 +1285,16 @@ select {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
 .duration-150 {
   transition-duration: 150ms;
 }
@@ -1287,6 +1303,30 @@ select {
 }
 .duration-75 {
   transition-duration: 75ms;
+}
+.duration-500 {
+  transition-duration: 500ms;
+}
+.duration-1000 {
+  transition-duration: 1000ms;
+}
+.duration-\[\$\{duration\}\] {
+  transition-duration: ${duration};
+}
+.duration-\[\"1000ms\"\] {
+  transition-duration: "1000ms";
+}
+.duration-\[1000ms\] {
+  transition-duration: 1000ms;
+}
+.duration-\[50ms\] {
+  transition-duration: 50ms;
+}
+.duration-\[500ms\] {
+  transition-duration: 500ms;
+}
+.duration-\[200ms\] {
+  transition-duration: 200ms;
 }
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

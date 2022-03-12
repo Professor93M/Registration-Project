@@ -1,7 +1,16 @@
+import { Down, Up } from "@/animations";
 import { Link } from "@inertiajs/inertia-react";
-import React from "react";
+import { motion } from "framer-motion";
+import React, { useEffect } from "react";
 
 const StageCard = ({ title, description, active, className, link }) => {
+    const [visible, setVisible] = React.useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setVisible(true);
+        }, 1000);
+    }, [visible]);
     return (
         <Link
             href={link}
@@ -9,14 +18,28 @@ const StageCard = ({ title, description, active, className, link }) => {
                 active
                     ? className
                     : "pointer-events-none bg-gray-300 text-gray-400"
-            } p-6 col-span-1`}
+            } p-6 col-span-1 transform ${
+                visible
+                    ? "opacity-100 transition-opacity duration-[200ms] ease-in-out"
+                    : "opacity-0"
+            } `}
         >
-            <h1 className="text-3xl font-bold leading-tight text-gray-900">
+            <motion.h1
+                variants={Up}
+                initial="hidden"
+                animate="show"
+                className="text-3xl  font-bold leading-tight text-gray-900"
+            >
                 {title}
-            </h1>
-            <p className="mt-4 text-lg leading-relaxed text-gray-600">
+            </motion.h1>
+            <motion.p
+                variants={Down}
+                initial="hidden"
+                animate="show"
+                className="mt-4 text-lg leading-relaxed text-gray-600"
+            >
                 {description}
-            </p>
+            </motion.p>
         </Link>
     );
 };

@@ -56,7 +56,7 @@ const Create = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(data);
-        post("/store");
+        post("/save");
     };
 
     return (
@@ -94,26 +94,18 @@ const Create = (props) => {
                                                 }}
                                             />
                                         </FormItem>
-
                                         <FormItem>
                                             <Combo
                                                 className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                 name="type"
                                                 label="الدراسة"
                                                 options={type}
-                                                value={
-                                                    props.student.dob >
-                                                    "01/01/1990"
-                                                        ? "مسائي"
-                                                        : "صباحي"
-                                                }
                                                 handleChange={(e) => {
                                                     handleChange(e);
                                                 }}
                                             />
                                         </FormItem>
                                     </form>
-
                                     <Button
                                         handleClick={handleSubmit}
                                         className=" mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100"
