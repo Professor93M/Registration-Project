@@ -24,14 +24,14 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('create', [StudentsController::class, 'create'])->name('create');
     Route::post('store', [StudentsController::class, 'store'])->name('store');
-    Route::get('show/{id}', [StudentsController::class, 'show'])->name('show');
-    Route::put('update/{id}', [StudentsController::class, 'update'])->name('update');
+    Route::get('show', [StudentsController::class, 'show'])->name('show');
+    Route::put('update', [StudentsController::class, 'update'])->name('update');
 
     Route::get('dept', [RegisterController::class, 'create'])->name('dept');
     Route::post('save', [RegisterController::class, 'store'])->name('deptsave');
-    Route::get('dshow/{id}', [RegisterController::class, 'show'])->name('dshow');
-    Route::put('dupdate/{id}', [RegisterController::class, 'update'])->name('dupdate');
+    Route::get('dshow', [RegisterController::class, 'show'])->name('dshow');
+    Route::put('dupdate', [RegisterController::class, 'update'])->name('dupdate');
 
-    Route::get('information/{id}', [RegisterController::class, 'information'])->name('information');
+    Route::get('information', [RegisterController::class, 'information'])->name('information');
 });
 
