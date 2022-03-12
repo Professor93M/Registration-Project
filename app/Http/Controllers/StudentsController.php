@@ -65,7 +65,7 @@ class StudentsController extends Controller
             'round' => 'required',
             'branch' => 'required',
         ]);
-        if($request->fullname !== $student->fullname || $request->DOB !== $student->DOB || 
+        if($request->fullname !== $student->fullname || $request->dob !== $student->DOB || 
         $request->year !== $student->year || $request->gender !== $student->gender ||
         $request->n_lessons !== $student->n_lessons || $request->sum !== $student->sum ||
         $request->round !== $student->round || $request->branch !== $student->branch){
