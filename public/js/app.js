@@ -3249,13 +3249,13 @@ function Dashboard(props) {
     title: "المرحلة الثانية",
     description: "في هذه المرحلة عليك تحديد القسم الذي تريد الانضمام له والدراسة التي تريد الانضمام لها",
     link: "/register/stage/2",
-    active: true,
+    active: props.stage1 ? true : false,
     className: "bg-orange-300 border-b border-gray-200"
   }, {
     title: "المرحلة الثالثة",
     description: "هذه المرحلة سيتم عرض معلومات القبول الخاص بك في الجامعه والقسم الذين تريد الانضمام لهم",
     link: "/register/stage/3",
-    active: true,
+    active: props.stage2 ? true : false,
     className: "bg-green-400 border-b border-gray-200"
   }];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -3286,7 +3286,7 @@ function Dashboard(props) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_StageCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
                   title: stage.title,
                   description: props.student ? stage.studentDesc : stage.description,
-                  link: stage.link,
+                  link: props.stage1 ? "/show/".concat(props.auth.user.id) : stage.link,
                   active: stage.active,
                   className: stage.className
                 }, stage.title);
@@ -3548,9 +3548,25 @@ var Information = function Information(props) {
 /*!*********************************************!*\
   !*** ./resources/js/Pages/Students/Show.js ***!
   \*********************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+
+var Show = function Show() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    children: "Show"
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Show);
 
 /***/ }),
 
