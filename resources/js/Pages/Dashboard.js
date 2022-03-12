@@ -19,28 +19,30 @@ export default function Dashboard(props) {
     const stages = [
         {
             title: "المرحلة الاولى",
-            description:
-                "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
-            studentDesc: "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح",
-            link: "/create",
+            description: props.stage1
+                ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح"
+                : "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
+            link: props.stage1 ? `/show/${props.auth.user.id}` : "/create",
             active: true,
-            className: "bg-blue-400 border-b border-gray-200",
+            className: "bg-blue-300 border-b border-gray-200",
         },
         {
             title: "المرحلة الثانية",
-            description:
-                "في هذه المرحلة عليك تحديد القسم الذي تريد الانضمام له والدراسة التي تريد الانضمام لها",
-            link: "/register/stage/2",
+            description: props.stage2
+                ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح"
+                : "في هذه المرحلة عليك تحديد القسم والدراسة التي ترغب بالتسجيل فيها",
+            link: props.stage1 ? "/dept" : `/show/${props.auth.user.id}`,
             active: props.stage1 ? true : false,
             className: "bg-orange-300 border-b border-gray-200",
         },
         {
             title: "المرحلة الثالثة",
-            description:
-                "هذه المرحلة سيتم عرض معلومات القبول الخاص بك في الجامعه والقسم الذين تريد الانضمام لهم",
-            link: "/register/stage/3",
+            description: props.stage2
+                ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح"
+                : "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
+            link: props.stage2 ? `/show/${props.auth.user.id}` : "/create",
             active: props.stage2 ? true : false,
-            className: "bg-green-400 border-b border-gray-200",
+            className: "bg-orange-300 border-b border-gray-200",
         },
     ];
     return (
@@ -63,19 +65,11 @@ export default function Dashboard(props) {
                                 {stages.map((stage) => (
                                     <StageCard
                                         key={stage.title}
+                                        link={stage.link}
                                         title={stage.title}
-                                        description={
-                                            props.student
-                                                ? stage.studentDesc
-                                                : stage.description
-                                        }
-                                        link={
-                                            props.active
-                                                ? `/show/${props.auth.user.id}`
-                                                : stage.link
-                                        }
                                         active={stage.active}
                                         className={stage.className}
+                                        description={stage.description}
                                     />
                                 ))}
                             </div>
