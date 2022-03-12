@@ -47,9 +47,10 @@ class StudentsController extends Controller
         return Redirect::route('dashboard')->with('success', ['icon' => 'success' ,'title' => 'نجحت العملية', 'message' => 'تم خزن بياناتك']);
     }
     
-    public function show(Students $id){
+    public function show($id){
+        $student = Students::where('users_id', $id)->first();
         return Inertia::render('Students/Show', [
-            'student' => Students::findOrFail($id)
+            'student' => $student
         ]);
     }
 
