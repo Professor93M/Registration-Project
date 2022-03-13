@@ -9,18 +9,20 @@ const StageCard = ({ title, description, active, className, link }) => {
     useEffect(() => {
         setTimeout(() => {
             setVisible(true);
-        }, 1000);
-    }, [visible]);
+        }, 500);
+    }, []);
     return (
         <Link
             href={link}
-            className={`${active
-                ? className
-                : "pointer-events-none bg-gray-300 text-gray-400 rounded-lg"
-                } p-6 col-span-1 transform ${visible
-                    ? "opacity-100 transition-opacity duration-[200ms] ease-in-out rounded-lg"
+            className={`${
+                active
+                    ? className
+                    : "pointer-events-none bg-gray-300 text-gray-400 rounded-lg"
+            } p-6 col-span-1 transform ${
+                visible
+                    ? "opacity-100 transition-opacity duration-[1000ms] ease-in-out rounded-lg"
                     : "opacity-0"
-                } `}
+            } `}
         >
             <motion.h1
                 variants={Up}

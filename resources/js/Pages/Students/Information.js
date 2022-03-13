@@ -120,7 +120,7 @@ const Information = (props) => {
                                                 type="number"
                                                 label="الرقم الامتحاني"
                                                 handleChange={handleChange}
-                                                value={data.sum}
+                                                value={data.idn}
                                             />
                                             <FormItem>
                                                 <Combo
@@ -177,7 +177,6 @@ const Information = (props) => {
                                                 value={data.year}
                                             />
                                         </div>
-
                                     </form>
 
                                     <Button

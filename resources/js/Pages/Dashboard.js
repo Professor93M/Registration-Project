@@ -10,10 +10,10 @@ export default function Dashboard(props) {
     useEffect(() => {
         props.success
             ? Toast.fire({
-                icon: props.success.icon,
-                message: props.success.message,
-                title: props.success.title,
-            })
+                  icon: props.success.icon,
+                  message: props.success.message,
+                  title: props.success.title,
+              })
             : null;
     }, [props.success]);
     const stages = [
@@ -32,7 +32,7 @@ export default function Dashboard(props) {
             description: props.stage2
                 ? "لقد قمت بإختيار القسم بنجاح"
                 : "في هذه المرحلة عليك تحديد القسم والدراسة التي ترغب بالتسجيل فيها",
-            link: !props.stage1 ? "/dept" : `/dshow`,
+            link: !props.stage2 ? "/dept" : `/dshow`,
             active: props.stage1 ? true : false,
             className: "bg-orange-300 border-b border-gray-200",
             duration: "3000",
@@ -40,11 +40,11 @@ export default function Dashboard(props) {
         {
             title: "المرحلة الثالثة",
             description: props.stage2
-                ? "تم تسجيل معلوماتك بمرحلة التسجيل بنجاح"
-                : "في هذه المرحلة عليك تحديد المعلومات الخاصة بك بشكل صحيح",
-            link: props.stage2 ? `/show` : "/create",
+                ? "تم قبولك اضغط لرؤية الطلبات المقبولة"
+                : "في هذه المرحلة سيظهر لك القبول الخاص بك",
+            link: "/information",
             active: props.stage2 ? true : false,
-            className: "bg-orange-300 border-b border-gray-200",
+            className: "bg-green-300 border-b border-gray-200",
             duration: "5000",
         },
     ];

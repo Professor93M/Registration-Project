@@ -66,7 +66,7 @@ class RegisterController extends Controller
     }
 
     public function information(Register $register){
-        return Inertia::render('Register/Show', [
+        return Inertia::render('Register/Information', [
             'register' => $register->with('students')->get(),
             'columns' => ['#', 'الاسم', 'المعدل', 'سنة التخرج', 'التولد', 'القسم', 'الدراسة', 'تاريخ التسجيل']
         ]);
