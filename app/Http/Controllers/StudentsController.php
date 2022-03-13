@@ -21,6 +21,7 @@ class StudentsController extends Controller
 
     public function store(Request $request){
         $request->validate([
+            'idn' => 'required|numeric|unique:students,idn',
             'fullname' => 'required|min:10',
             'dob' => 'required|date',
             'year' => 'required',
@@ -32,6 +33,7 @@ class StudentsController extends Controller
         ]);
 
         Students::create([
+            'idn' => $request->idn,
             'fullname' => $request->fullname,
             'DOB' => $request->dob,
             'year' => $request->year,
@@ -57,6 +59,7 @@ class StudentsController extends Controller
     public function update(Request $request){
         $student = Students::where('users_id', Auth::user()->id)->first();
         $request->validate([
+            'idn' => 'required|numeric|unique:students,idn',
             'fullname' => 'required|min:10',
             'dob' => 'required|date',
             'year' => 'required',
@@ -66,11 +69,12 @@ class StudentsController extends Controller
             'round' => 'required',
             'branch' => 'required',
         ]);
-        if($request->fullname !== $student->fullname || $request->dob !== $student->DOB || 
+        if($request->idn !== $student->idn || $request->fullname !== $student->fullname || $request->dob !== $student->DOB || 
         $request->year !== $student->year || $request->gender !== $student->gender ||
         $request->n_lessons !== $student->n_lessons || $request->sum !== $student->sum ||
         $request->round !== $student->round || $request->branch !== $student->branch){
             $student->update([
+                'idn' => $request->idn,
                 'fullname' => $request->fullname,
                 'DOB' => $request->dob,
                 'year' => $request->year,

@@ -10,10 +10,10 @@ export default function Dashboard(props) {
     useEffect(() => {
         props.success
             ? Toast.fire({
-                  icon: props.success.icon,
-                  message: props.success.message,
-                  title: props.success.title,
-              })
+                icon: props.success.icon,
+                message: props.success.message,
+                title: props.success.title,
+            })
             : null;
     }, [props.success]);
     const stages = [
@@ -63,8 +63,8 @@ export default function Dashboard(props) {
                                 للبدء قم بالضغط على مرحلة التسجيل الاولى
                             </p>
                         </div>
-                        <div className="w-full bg-white py-8 rounded-lg">
-                            <div className="w-3/4 mx-auto grid grid-cols-3 shadow-sm sm:rounded-lg">
+                        <div className="w-full bg-white py-8">
+                            <div className="w-3/4 mx-auto grid grid-cols-3 gap-4 shadow-sm">
                                 {stages.map((stage) => (
                                     <StageCard
                                         key={stage.title}

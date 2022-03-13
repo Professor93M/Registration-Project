@@ -14,15 +14,13 @@ const StageCard = ({ title, description, active, className, link }) => {
     return (
         <Link
             href={link}
-            className={`${
-                active
-                    ? className
-                    : "pointer-events-none bg-gray-300 text-gray-400"
-            } p-6 col-span-1 transform ${
-                visible
-                    ? "opacity-100 transition-opacity duration-[200ms] ease-in-out"
+            className={`${active
+                ? className
+                : "pointer-events-none bg-gray-300 text-gray-400 rounded-lg"
+                } p-6 col-span-1 transform ${visible
+                    ? "opacity-100 transition-opacity duration-[200ms] ease-in-out rounded-lg"
                     : "opacity-0"
-            } `}
+                } `}
         >
             <motion.h1
                 variants={Up}

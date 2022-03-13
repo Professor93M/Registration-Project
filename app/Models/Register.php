@@ -10,7 +10,7 @@ class Register extends Model
     use HasFactory;
 
     protected $fillable = [
-        'dop',
+        'dept',
         'type',
         'students_id',
     ];

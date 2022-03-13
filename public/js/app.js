@@ -2229,7 +2229,7 @@ function Button(_ref) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Label__WEBPACK_IMPORTED_MODULE_2__["default"], {
       forInput: name,
       value: label,
-      className: "w-full text-right"
+      className: "w-full text-right mb-2"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.select, {
       variants: _animations__WEBPACK_IMPORTED_MODULE_1__.FadeIn,
       initial: "hidden",
@@ -2455,7 +2455,7 @@ var FormItem = function FormItem(_ref) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Label__WEBPACK_IMPORTED_MODULE_3__["default"], {
       forInput: name,
       value: label,
-      className: "w-full text-right"
+      className: "w-full text-right mb-2"
     }), children ? children : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Input__WEBPACK_IMPORTED_MODULE_2__["default"], {
       name: name,
       type: type,
@@ -2688,7 +2688,7 @@ var StageCard = function StageCard(_ref) {
   }, [visible]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     href: link,
-    className: "".concat(active ? className : "pointer-events-none bg-gray-300 text-gray-400", " p-6 col-span-1 transform ").concat(visible ? "opacity-100 transition-opacity duration-[200ms] ease-in-out" : "opacity-0", " "),
+    className: "".concat(active ? className : "pointer-events-none bg-gray-300 text-gray-400 rounded-lg", " p-6 col-span-1 transform ").concat(visible ? "opacity-100 transition-opacity duration-[200ms] ease-in-out rounded-lg" : "opacity-0", " "),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.h1, {
       variants: _animations__WEBPACK_IMPORTED_MODULE_0__.Up,
       initial: "hidden",
@@ -3356,9 +3356,9 @@ function Dashboard(props) {
               children: "\u0644\u0644\u0628\u062F\u0621 \u0642\u0645 \u0628\u0627\u0644\u0636\u063A\u0637 \u0639\u0644\u0649 \u0645\u0631\u062D\u0644\u0629 \u0627\u0644\u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u0627\u0648\u0644\u0649"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-            className: "w-full bg-white py-8 rounded-lg",
+            className: "w-full bg-white py-8",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-              className: "w-3/4 mx-auto grid grid-cols-3 shadow-sm sm:rounded-lg",
+              className: "w-3/4 mx-auto grid grid-cols-3 gap-4 shadow-sm",
               children: stages.map(function (stage) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_StageCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
                   link: stage.link,
@@ -3707,11 +3707,9 @@ __webpack_require__.r(__webpack_exports__);
 var Information = function Information(props) {
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
     fullname: "",
-    address: "",
+    idn: "",
     dob: "",
     gender: "",
-    phone: "",
-    email: "",
     avg: "",
     branch: "",
     sum: "",
@@ -3793,13 +3791,6 @@ var Information = function Information(props) {
                     handleChange: _handleChange,
                     value: data.fullname
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "address",
-                    type: "text",
-                    label: "\u0627\u0644\u0639\u0646\u0648\u0627\u0646",
-                    className: "col-span-2",
-                    handleChange: _handleChange,
-                    value: data.address
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     name: "dob",
                     type: "date",
                     label: "\u062A\u0627\u0631\u064A\u062E \u0627\u0644\u0645\u064A\u0644\u0627\u062F",
@@ -3816,67 +3807,64 @@ var Information = function Information(props) {
                         _handleChange(e);
                       }
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "email",
-                    type: "email",
-                    label: "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A",
-                    handleChange: _handleChange,
-                    value: data.email
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "phone",
-                    type: "tel",
-                    label: "\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062A\u0641",
-                    pattern: "[0-9]{4}-[0-9]{4}-[0-9]{3}",
-                    handleChange: _handleChange,
-                    value: data.phone
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                      className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
-                      name: "branch",
-                      add: "true",
-                      label: "\u0627\u0644\u0641\u0631\u0639",
-                      options: branch,
-                      handleChange: function handleChange(e) {
-                        _handleChange(e);
-                      }
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                      className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
-                      name: "round",
-                      add: "true",
-                      label: "\u0627\u0644\u062F\u0648\u0631",
-                      options: round,
-                      handleChange: function handleChange(e) {
-                        _handleChange(e);
-                      }
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "sum",
-                    type: "number",
-                    label: "\u0627\u0644\u0645\u062C\u0645\u0648\u0639",
-                    handleChange: _handleChange,
-                    value: data.sum
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "n_lessons",
-                    type: "number",
-                    label: "\u0639\u062F\u062F \u0627\u0644\u062F\u0631\u0648\u0633",
-                    handleChange: _handleChange,
-                    value: data.n_lessons
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "avg",
-                    type: "number",
-                    label: "\u0627\u0644\u0645\u0639\u062F\u0644",
-                    max: "100",
-                    min: "50",
-                    handleChange: _handleChange,
-                    value: data.avg
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "year",
-                    type: "number",
-                    label: "\u0633\u0646\u0629 \u0627\u0644\u062A\u062E\u0631\u062C",
-                    handleChange: _handleChange,
-                    value: data.year
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                    className: "col-span-4 gap-4 grid grid-cols-4 border-2 p-3 rounded-lg mt-3",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      className: "col-span-2",
+                      name: "idn",
+                      type: "number",
+                      label: "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u064A",
+                      handleChange: _handleChange,
+                      value: data.sum
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                        className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                        name: "branch",
+                        add: "true",
+                        label: "\u0627\u0644\u0641\u0631\u0639",
+                        options: branch,
+                        handleChange: function handleChange(e) {
+                          _handleChange(e);
+                        }
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                        className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                        name: "round",
+                        add: "true",
+                        label: "\u0627\u0644\u062F\u0648\u0631",
+                        options: round,
+                        handleChange: function handleChange(e) {
+                          _handleChange(e);
+                        }
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      name: "sum",
+                      type: "number",
+                      label: "\u0627\u0644\u0645\u062C\u0645\u0648\u0639",
+                      handleChange: _handleChange,
+                      value: data.sum
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      name: "n_lessons",
+                      type: "number",
+                      label: "\u0639\u062F\u062F \u0627\u0644\u062F\u0631\u0648\u0633",
+                      handleChange: _handleChange,
+                      value: data.n_lessons
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      name: "avg",
+                      type: "number",
+                      label: "\u0627\u0644\u0645\u0639\u062F\u0644",
+                      max: "100",
+                      min: "50",
+                      handleChange: _handleChange,
+                      value: data.avg
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      name: "year",
+                      type: "number",
+                      label: "\u0633\u0646\u0629 \u0627\u0644\u062A\u062E\u0631\u062C",
+                      handleChange: _handleChange,
+                      value: data.year
+                    })]
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
                   handleClick: handleSubmit,

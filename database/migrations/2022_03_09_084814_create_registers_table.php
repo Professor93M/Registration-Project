@@ -15,8 +15,8 @@ class CreateRegistersTable extends Migration
     {
         Schema::create('registers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('dept');
-            $table->integer('type');
+            $table->string('dept');
+            $table->string('type');
             $table->bigInteger('students_id')->unsigned();
             $table->foreign('students_id')->references('id')->on('students');
             $table->timestamps();

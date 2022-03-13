@@ -27,7 +27,7 @@ const FormItem = ({
             <Label
                 forInput={name}
                 value={label}
-                className="w-full text-right"
+                className="w-full text-right mb-2"
             />
             {children ? (
                 children

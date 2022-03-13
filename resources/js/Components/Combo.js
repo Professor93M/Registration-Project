@@ -21,7 +21,7 @@ export default function Button({
             <Label
                 forInput={name}
                 value={label}
-                className="w-full text-right"
+                className="w-full text-right mb-2"
             />
             <motion.select
                 variants={FadeIn}

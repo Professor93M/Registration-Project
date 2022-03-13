@@ -10,6 +10,7 @@ class Students extends Model
     use HasFactory;
 
     protected $fillable = [
+        'idn',
         'fullname',
         'DOB',
         'year',
