@@ -16,6 +16,7 @@ const FormItem = ({
     handleChange,
     className,
     children,
+    disabled,
 }) => {
     return (
         <motion.div
@@ -41,6 +42,7 @@ const FormItem = ({
                     maxLength={maxLength}
                     pattern={pattern}
                     handleChange={handleChange}
+                    disabled={disabled}
                 />
             )}
         </motion.div>

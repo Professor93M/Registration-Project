@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { motion } from "framer-motion";
@@ -13,10 +13,10 @@ const Information = (props) => {
         idn: "",
         dob: "",
         gender: "",
-        avg: "",
+        avg: 0,
         branch: "",
-        sum: "",
-        n_lessons: "",
+        sum: 0,
+        n_lessons: 1,
         round: "",
         year: "",
     });
@@ -49,11 +49,17 @@ const Information = (props) => {
         },
     ];
 
+    useEffect(() => {
+        const avg = parseInt(data.sum) / parseInt(data.n_lessons);
+        setData({ ...data, avg: avg.toFixed(2) });
+    }, [data.sum, data.n_lessons]);
+
     const handleChange = (e) => {
         setData(
             e.target.name,
             e.target.type === "checkbox" ? e.target.checked : e.target.value
         );
+        console.log(data);
     };
 
     const handleSubmit = (e) => {
@@ -103,7 +109,7 @@ const Information = (props) => {
                                         />
                                         <FormItem>
                                             <Combo
-                                                className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                className="appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                 name="gender"
                                                 add={"true"}
                                                 label="الجنس"
@@ -113,7 +119,7 @@ const Information = (props) => {
                                                 }}
                                             />
                                         </FormItem>
-                                        <div className="col-span-4 gap-4 grid grid-cols-4 border-2 p-3 rounded-lg mt-3">
+                                        <div className="col-span-4 grid grid-cols-4 items-center gap-x-3 border-2 p-3 rounded-lg mt-3">
                                             <FormItem
                                                 className="col-span-2"
                                                 name="idn"
@@ -124,7 +130,7 @@ const Information = (props) => {
                                             />
                                             <FormItem>
                                                 <Combo
-                                                    className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                    className="appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                     name="branch"
                                                     add={"true"}
                                                     label="الفرع"
@@ -136,7 +142,7 @@ const Information = (props) => {
                                             </FormItem>
                                             <FormItem>
                                                 <Combo
-                                                    className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                    className="appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                     name="round"
                                                     add={"true"}
                                                     label="الدور"
@@ -166,8 +172,8 @@ const Information = (props) => {
                                                 label="المعدل"
                                                 max="100"
                                                 min="50"
-                                                handleChange={handleChange}
                                                 value={data.avg}
+                                                disabled
                                             />
                                             <FormItem
                                                 name="year"

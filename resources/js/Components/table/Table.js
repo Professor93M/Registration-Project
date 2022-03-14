@@ -18,8 +18,8 @@ const ReactTable = ({ data, cols }) => {
         [data, cols]
     );
 
-    const isEven = (index) => {
-        return index % 2 === 0;
+    const isAccepted = (index) => {
+        return index >= 1 === 0;
     };
 
     // const tableHooks = (hooks) => {
@@ -123,7 +123,9 @@ const ReactTable = ({ data, cols }) => {
                                 {...row.getRowProps()}
                                 key={i}
                                 className={`${
-                                    !isEven(i) ? "bg-slate-200" : ""
+                                    !isAccepted(row.avg)
+                                        ? "bg-green-200"
+                                        : "bg-red-200"
                                 } `}
                             >
                                 {row.cells.map((cell, index) => {

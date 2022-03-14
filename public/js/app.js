@@ -2447,7 +2447,8 @@ var FormItem = function FormItem(_ref) {
       pattern = _ref.pattern,
       handleChange = _ref.handleChange,
       className = _ref.className,
-      children = _ref.children;
+      children = _ref.children,
+      disabled = _ref.disabled;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(framer_motion__WEBPACK_IMPORTED_MODULE_5__.motion.div, {
     variants: _animations__WEBPACK_IMPORTED_MODULE_1__.Container,
     initial: "hidden",
@@ -2465,7 +2466,8 @@ var FormItem = function FormItem(_ref) {
       value: value,
       maxLength: maxLength,
       pattern: pattern,
-      handleChange: handleChange
+      handleChange: handleChange,
+      disabled: disabled
     })]
   });
 };
@@ -2498,9 +2500,7 @@ function Input(_ref) {
       type = _ref$type === void 0 ? "text" : _ref$type,
       name = _ref.name,
       value = _ref.value,
-      className = _ref.className,
-      autoComplete = _ref.autoComplete,
-      required = _ref.required,
+      disabled = _ref.disabled,
       isFocused = _ref.isFocused,
       max = _ref.max,
       min = _ref.min,
@@ -2513,10 +2513,11 @@ function Input(_ref) {
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(framer_motion__WEBPACK_IMPORTED_MODULE_3__.motion.input, {
     ref: input,
+    disabled: disabled,
     variants: _animations__WEBPACK_IMPORTED_MODULE_1__.FadeIn,
     animate: "show",
     initial: "hidden",
-    className: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+    className: "".concat(type === "date" ? "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-[10px] px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" : "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"),
     name: name,
     id: name,
     type: type,
@@ -2890,8 +2891,8 @@ var ReactTable = function ReactTable(_ref) {
     }) : [];
   }, [data, cols]);
 
-  var isEven = function isEven(index) {
-    return index % 2 === 0;
+  var isAccepted = function isAccepted(index) {
+    return index >= 1 === 0;
   }; // const tableHooks = (hooks) => {
   //     hooks.visibleColumns.push((columns) => [
   //         ...columns,
@@ -2973,7 +2974,7 @@ var ReactTable = function ReactTable(_ref) {
           prepareRow(row);
           return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", _objectSpread(_objectSpread({}, row.getRowProps()), {}, {
             key: i,
-            className: "".concat(!isEven(i) ? "bg-slate-200" : "", " ")
+            className: "".concat(!isAccepted(row.avg) ? "bg-green-200" : "bg-red-200", " ")
           }), row.cells.map(function (cell, index) {
             return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", _objectSpread(_objectSpread({}, cell.getCellProps()), {}, {
               className: "p-3 w-fit",
@@ -4063,6 +4064,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.js");
 /* harmony import */ var _Components_Combo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Combo */ "./resources/js/Components/Combo.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -4080,10 +4087,10 @@ var Information = function Information(props) {
     idn: "",
     dob: "",
     gender: "",
-    avg: "",
+    avg: 0,
     branch: "",
-    sum: "",
-    n_lessons: "",
+    sum: 0,
+    n_lessons: 1,
     round: "",
     year: ""
   }),
@@ -4111,9 +4118,16 @@ var Information = function Information(props) {
   }, {
     name: "الدور التكميلي"
   }];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var avg = parseInt(data.sum) / parseInt(data.n_lessons);
+    setData(_objectSpread(_objectSpread({}, data), {}, {
+      avg: avg.toFixed(2)
+    }));
+  }, [data.sum, data.n_lessons]);
 
   var _handleChange = function handleChange(e) {
     setData(e.target.name, e.target.type === "checkbox" ? e.target.checked : e.target.value);
+    console.log(data);
   };
 
   var handleSubmit = function handleSubmit(e) {
@@ -4168,7 +4182,7 @@ var Information = function Information(props) {
                     value: data.dob
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                      className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                      className: "appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
                       name: "gender",
                       add: "true",
                       label: "\u0627\u0644\u062C\u0646\u0633",
@@ -4178,7 +4192,7 @@ var Information = function Information(props) {
                       }
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                    className: "col-span-4 gap-4 grid grid-cols-4 border-2 p-3 rounded-lg mt-3",
+                    className: "col-span-4 grid grid-cols-4 items-center gap-x-3 border-2 p-3 rounded-lg mt-3",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                       className: "col-span-2",
                       name: "idn",
@@ -4188,7 +4202,7 @@ var Information = function Information(props) {
                       value: data.idn
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                        className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                        className: "appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
                         name: "branch",
                         add: "true",
                         label: "\u0627\u0644\u0641\u0631\u0639",
@@ -4199,7 +4213,7 @@ var Information = function Information(props) {
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                        className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                        className: "appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
                         name: "round",
                         add: "true",
                         label: "\u0627\u0644\u062F\u0648\u0631",
@@ -4226,8 +4240,8 @@ var Information = function Information(props) {
                       label: "\u0627\u0644\u0645\u0639\u062F\u0644",
                       max: "100",
                       min: "50",
-                      handleChange: _handleChange,
-                      value: data.avg
+                      value: data.avg,
+                      disabled: true
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                       name: "year",
                       type: "number",

@@ -6,9 +6,7 @@ export default function Input({
     type = "text",
     name,
     value,
-    className,
-    autoComplete,
-    required,
+    disabled,
     isFocused,
     max,
     min,
@@ -25,10 +23,15 @@ export default function Input({
     return (
         <motion.input
             ref={input}
+            disabled={disabled}
             variants={FadeIn}
             animate="show"
             initial="hidden"
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            className={`${
+                type === "date"
+                    ? "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-[10px] px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    : "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            }`}
             name={name}
             id={name}
             type={type}
