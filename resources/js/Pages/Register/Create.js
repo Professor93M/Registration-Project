@@ -56,6 +56,9 @@ const Create = (props) => {
 
     const type = [
         {
+            name: "حدد الدراسة",
+        },
+        {
             name: "صباحي",
         },
         {

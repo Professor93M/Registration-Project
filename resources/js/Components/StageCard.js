@@ -14,9 +14,6 @@ const StageCard = ({ title, description, active, className, link, icon }) => {
 
     return (
         <Link
-            onClick={() => {
-                active == true ? "" : console.log("pfpojpj");
-            }}
             href={link}
             className={` group relative overflow-hidden h-2/4 ${
                 active

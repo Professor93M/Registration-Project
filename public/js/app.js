@@ -2690,9 +2690,6 @@ var StageCard = function StageCard(_ref) {
     }, 500);
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
-    onClick: function onClick() {
-      active == true ? "" : console.log("pfpojpj");
-    },
     href: link,
     className: " group relative overflow-hidden h-2/4 ".concat(active ? className : "pointer-events-none  text-gray-400 rounded-lg", " p-6 col-span-1 transform ").concat(visible ? "opacity-100 transition-opacity duration-[1000ms] ease-in-out rounded-lg" : "opacity-0", " "),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.div, {
@@ -3767,6 +3764,8 @@ var Create = function Create(props) {
   });
   console.log(filteredDepts);
   var type = [{
+    name: "حدد الدراسة"
+  }, {
     name: "صباحي"
   }, {
     name: "مسائي"
