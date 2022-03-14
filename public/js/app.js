@@ -3006,14 +3006,14 @@ var ReactTable = function ReactTable(_ref) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "flex gap-x-3",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            className: "bg-slate-700 hover:bg-slate-800 text-slate-100/90 p-2 rounded-lg",
+            className: "bg-slate-700 hover:bg-slate-800 disabled:bg-slate-400 text-slate-100/90 p-2 rounded-lg",
             onClick: function onClick() {
               return gotoPage(0);
             },
             disabled: !canPreviousPage,
             children: "<<"
           }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            className: "bg-slate-700 disabled:bg-gray-600 hover:bg-slate-800 text-slate-100 p-2 rounded-lg",
+            className: "bg-slate-700 disabled:bg-slate-400 hover:bg-slate-800 text-slate-100 p-2 rounded-lg",
             onClick: function onClick() {
               previousPage();
             },
@@ -3021,13 +3021,13 @@ var ReactTable = function ReactTable(_ref) {
             children: "\u21E8"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
             disabled: !canNextPage,
-            className: "bg-slate-700 disabled:bg-gray-600 hover:bg-slate-800 text-slate-100 p-2 rounded-lg",
+            className: "bg-slate-700 disabled:bg-slate-400 hover:bg-slate-800 text-slate-100 p-2 rounded-lg",
             onClick: function onClick() {
               nextPage();
             },
             children: "\u21E6"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            className: "bg-slate-700 hover:bg-slate-800 text-slate-100/90 p-2 rounded-lg",
+            className: "bg-slate-700 hover:bg-slate-800 disabled:bg-slate-400 text-slate-100/90 p-2 rounded-lg",
             onClick: function onClick() {
               return gotoPage(pageCount - 1);
             },
@@ -3968,7 +3968,7 @@ var Information = function Information(_ref) {
         className: "flex gap-x-10 mt-12 justify-center",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
           handleClick: back,
-          className: " mt-6 bg-slate-500 px-4 py-2 rounded-lg text-slate-100",
+          className: " mt-6 bg-slate-700 px-4 py-2 rounded-lg text-slate-100",
           children: "\u0631\u062C\u0648\u0639"
         })
       })]

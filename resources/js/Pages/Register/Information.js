@@ -50,7 +50,7 @@ const Information = ({ columns, register, auth }) => {
                 <div className="flex gap-x-10 mt-12 justify-center">
                     <Button
                         handleClick={back}
-                        className=" mt-6 bg-slate-500 px-4 py-2 rounded-lg text-slate-100"
+                        className=" mt-6 bg-slate-700 px-4 py-2 rounded-lg text-slate-100"
                     >
                         رجوع
                     </Button>

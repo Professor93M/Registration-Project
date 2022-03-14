@@ -158,14 +158,14 @@ const ReactTable = ({ data, cols, arabicCols }) => {
                     </span>
                     <div className="flex gap-x-3">
                         <button
-                            className="bg-slate-700 hover:bg-slate-800 text-slate-100/90 p-2 rounded-lg"
+                            className="bg-slate-700 hover:bg-slate-800 disabled:bg-slate-400 text-slate-100/90 p-2 rounded-lg"
                             onClick={() => gotoPage(0)}
                             disabled={!canPreviousPage}
                         >
                             {"<<"}
                         </button>{" "}
                         <button
-                            className="bg-slate-700 disabled:bg-gray-600 hover:bg-slate-800 text-slate-100 p-2 rounded-lg"
+                            className="bg-slate-700 disabled:bg-slate-400 hover:bg-slate-800 text-slate-100 p-2 rounded-lg"
                             onClick={() => {
                                 previousPage();
                             }}
@@ -175,7 +175,7 @@ const ReactTable = ({ data, cols, arabicCols }) => {
                         </button>
                         <button
                             disabled={!canNextPage}
-                            className="bg-slate-700 disabled:bg-gray-600 hover:bg-slate-800 text-slate-100 p-2 rounded-lg"
+                            className="bg-slate-700 disabled:bg-slate-400 hover:bg-slate-800 text-slate-100 p-2 rounded-lg"
                             onClick={() => {
                                 nextPage();
                             }}
@@ -183,7 +183,7 @@ const ReactTable = ({ data, cols, arabicCols }) => {
                             &#x21E6;
                         </button>
                         <button
-                            className="bg-slate-700 hover:bg-slate-800 text-slate-100/90 p-2 rounded-lg"
+                            className="bg-slate-700 hover:bg-slate-800 disabled:bg-slate-400 text-slate-100/90 p-2 rounded-lg"
                             onClick={() => gotoPage(pageCount - 1)}
                             disabled={!canNextPage}
                         >
