@@ -27,6 +27,9 @@ class RegisterController extends Controller
         $request->validate([
             'dept' => 'required',
             'type' => 'required'
+        ],[
+            'dept.required' => 'يجب تحديد القسم',
+            'type.required' => 'يجب تحديد نوع الدراسة',
         ]);
         $id = Students::select('id')->where('users_id', Auth::user()->id)->first();
         Register::create([
@@ -54,6 +57,9 @@ class RegisterController extends Controller
         $request->validate([
             'dept' => 'required',
             'type' => 'required'
+        ],[
+            'dept.required' => 'يجب تحديد القسم',
+            'type.required' => 'يجب تحديد نوع الدراسة',
         ]);
         if($request->dept !== $register->dept || $request->type !== $register->type){
             $register->update([
@@ -70,6 +76,7 @@ class RegisterController extends Controller
         $std = Students::where('users_id', Auth::user()->id)->first('id');
         $reg = Register::where('students_id', $std['id'])->first();
         return Inertia::render('Register/Information', [
+            'dept' => $reg->dept,
             'register' => $register->with('students')->where('dept', $reg->dept)->get(),
             'columns' => ['#', 'الاسم', 'المعدل', 'سنة التخرج', 'التولد', 'القسم', 'الدراسة', 'تاريخ التسجيل']
         ]);

@@ -40,6 +40,16 @@ class RegisteredUserController extends Controller
             'name' => 'required|string',
             'mobile' => 'required|regex:/(07)[0-9]{9}/|unique:users,mobile',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ],[
+            'name.required' => 'يجب ادخال اسم المستخدم', 
+            'name.string' => 'اسم المستخدم غير صحيح', 
+            
+            'mobile.required' => 'يجب ادخال رقم الهاتف', 
+            'mobile.regex' => 'رقم الهاتف المدخل غير صحيح', 
+            'mobile.unique' => 'رقم الهاتف المدخل موجود فعلاً', 
+            
+            'password.required' => 'يجب ادخال كلمة المرور', 
+            'password.confirmed' => 'كلمة المرور غير متطابقة', 
         ]);
 
         $user = User::create([

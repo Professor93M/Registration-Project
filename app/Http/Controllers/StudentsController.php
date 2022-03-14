@@ -30,6 +30,31 @@ class StudentsController extends Controller
             'sum' => 'required|numeric',
             'round' => 'required',
             'branch' => 'required',
+        ],[
+            'idn.required' => 'يجب ادخال الرقم الامتحاني',
+            'idn.numeric' => 'الرقم الامتحاني غير صحيح',
+            'idn.unique' => 'الرقم الامتحاني المدخل موجود فعلاً',
+
+            'fullname.required' => 'يجب ادخال الاسم الكامل',
+            'fullname.min' => 'ادخل الاسم الكامل',
+
+            'dob.required' => 'يجب ادخال تاريخ الميلاد',
+            'dob.date' => 'تاريخ الميلاد غير صحيح',
+
+            'year.required' => 'سنة التخرج غير صحيحة',
+
+            'gender.required' => 'يجب تحديد الجنس',
+
+            'n_lessons.required' => 'يجب ادخال عدد الدروس',
+            'n_lessons.numeric' => 'عدد الدروس المدخل غير صحيح',
+
+            'sum.required' => 'يجب ادخال المجموع',
+            'sum.numeric' => 'المجموع المدخل غير صحيح',
+
+            'round.required' => 'يجب تحديد الدور',
+
+            'branch.required' => 'يجب تحديد الفرع',
+
         ]);
 
         Students::create([
@@ -65,46 +90,70 @@ class StudentsController extends Controller
             if($request->idn !== $student->idn){
                 $request->validate([
                     'idn' => 'required|numeric|unique:students,idn',
+                ],[
+                    'idn.required' => 'يجب ادخال الرقم الامتحاني',
+                    'idn.numeric' => 'الرقم الامتحاني غير صحيح',
+                    'idn.unique' => 'الرقم الامتحاني المدخل موجود فعلاً',
                 ]);
             }
             if($request->fullname !== $student->fullname){
                 $request->validate([
                     'fullname' => 'required|min:10',
+                ],[  
+                    'fullname.required' => 'يجب ادخال الاسم الكامل',
+                    'fullname.min' => 'ادخل الاسم الكامل',
                 ]);
             }
             if($request->dob !== $student->DOB){
                 $request->validate([
                     'dob' => 'required|date',
+                ],[
+                    'dob.required' => 'يجب ادخال تاريخ الميلاد',
+                    'dob.date' => 'تاريخ الميلاد غير صحيح',
                 ]);
             }
             if($request->year !== $student->year){
                 $request->validate([
                     'year' => 'required',
+                ],[
+                    'year.required' => 'سنة التخرج غير صحيحة',
                 ]);
             }
             if($request->gender !== $student->idn){
                 $request->validate([
                     'gender' => 'required',
+                ],[
+                    'gender.required' => 'يجب تحديد الجنس',
                 ]);
             }
             if($request->n_lessons !== $student->n_lessons){
                 $request->validate([
                     'n_lessons' => 'required|numeric',
+                ],[
+                    'n_lessons.required' => 'يجب ادخال عدد الدروس',
+                    'n_lessons.numeric' => 'عدد الدروس المدخل غير صحيح',
                 ]);
             }
             if($request->sum !== $student->sum){
                 $request->validate([
                     'sum' => 'required|numeric',
+                ],[
+                    'sum.required' => 'يجب ادخال المجموع',
+                    'sum.numeric' => 'المجموع المدخل غير صحيح',
                 ]);
             }
             if($request->round !== $student->round){
                 $request->validate([
                     'round' => 'required',
+                ],[
+                    'round.required' => 'يجب تحديد الدور',
                 ]);
             }
             if($request->branch !== $student->branch){
                 $request->validate([
                     'branch' => 'required',
+                ],[
+                    'branch.required' => 'يجب تحديد الفرع',
                 ]);
             }
             $student->update([
