@@ -59,7 +59,6 @@ const Information = (props) => {
             e.target.name,
             e.target.type === "checkbox" ? e.target.checked : e.target.value
         );
-        console.log(data);
     };
 
     const handleSubmit = (e) => {

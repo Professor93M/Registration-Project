@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { motion } from "framer-motion";
@@ -22,6 +22,11 @@ const Show = (props) => {
         year: props.student.year || "",
         _method: "PUT",
     });
+
+    useEffect(() => {
+        const avg = parseInt(data.sum) / parseInt(data.n_lessons);
+        setData({ ...data, avg: avg.toFixed(2) });
+    }, [data.sum, data.n_lessons]);
 
     const gender = [
         {
@@ -61,7 +66,7 @@ const Show = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(data);
-        post('/update');
+        post("/update");
     };
 
     return (
@@ -171,8 +176,8 @@ const Show = (props) => {
                                                 label="المعدل"
                                                 max="100"
                                                 min="50"
-                                                handleChange={handleChange}
                                                 value={data.avg}
+                                                disabled
                                             />
                                             <FormItem
                                                 name="year"

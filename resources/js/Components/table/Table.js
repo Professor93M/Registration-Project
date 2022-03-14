@@ -4,14 +4,14 @@ import { BiEdit, BiTrash } from "react-icons/bi";
 import { useGlobalFilter } from "react-table/dist/react-table.development";
 import GlobalFilter from "./GlobalFilter";
 
-const ReactTable = ({ data, cols }) => {
+const ReactTable = ({ data, cols, arabicCols }) => {
     const columns = useMemo(
         () =>
             data[0]
                 ? Object.keys(data[0])
                       .filter((key) => (cols.includes(key) ? key : null))
                       .map((key) => ({
-                          Header: key,
+                          Header: arabicCols[key],
                           accessor: key,
                       }))
                 : [],
@@ -81,20 +81,24 @@ const ReactTable = ({ data, cols }) => {
             />
             <table
                 {...getTableProps()}
-                className="rounded-t-lg overflow-hidden mx-auto w-full"
+                className="rounded-t-lg overflow-hidden mx-auto w-full text-center"
             >
                 <thead className="bg-slate-700 text-slate-100/90 capitalize">
                     {headerGroups.map((headerGroup, i) => (
-                        <tr {...headerGroup.getHeaderGroupProps()} key={i}>
+                        <tr
+                            {...headerGroup.getHeaderGroupProps()}
+                            key={i}
+                            className=""
+                        >
                             {headerGroup.headers.map((column) => (
                                 <th
                                     {...column.getHeaderProps(
                                         column.getSortByToggleProps()
                                     )}
-                                    className={"p-2"}
+                                    className="p-2"
                                     key={column.id}
                                 >
-                                    <span className="p-2 w-fit flex items-center gap-x-2">
+                                    <span className="p-2  flex justify-center items-center gap-x-2">
                                         {column.render("Header")}
                                         {column.isSorted ? (
                                             column.isSortedDesc ? (
@@ -122,17 +126,17 @@ const ReactTable = ({ data, cols }) => {
                             <tr
                                 {...row.getRowProps()}
                                 key={i}
-                                className={`${
+                                className={` text-center ${
                                     !isAccepted(row.avg)
                                         ? "bg-green-200"
                                         : "bg-red-200"
-                                } `}
+                                }  `}
                             >
                                 {row.cells.map((cell, index) => {
                                     return (
                                         <td
                                             {...cell.getCellProps()}
-                                            className="p-3 w-fit"
+                                            className="p-3   text-center"
                                             key={index}
                                         >
                                             {cell.render("Cell")}
@@ -167,7 +171,7 @@ const ReactTable = ({ data, cols }) => {
                             }}
                             disabled={!canPreviousPage}
                         >
-                            &#x21E6;
+                            &#x21E8;
                         </button>
                         <button
                             disabled={!canNextPage}
@@ -176,7 +180,7 @@ const ReactTable = ({ data, cols }) => {
                                 nextPage();
                             }}
                         >
-                            &#x21E8;
+                            &#x21E6;
                         </button>
                         <button
                             className="bg-slate-700 hover:bg-slate-800 text-slate-100/90 p-2 rounded-lg"

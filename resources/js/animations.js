@@ -52,7 +52,7 @@ export const SlideUp = {
 export const Down = {
     hidden: {
         opacity: 0,
-        y: -50,
+        y: -80,
     },
     show: {
         opacity: 1,

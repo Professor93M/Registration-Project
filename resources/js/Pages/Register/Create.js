@@ -17,26 +17,42 @@ const Create = (props) => {
     const dept = [
         {
             name: "هندسة مدني",
+            avg: 65,
         },
         {
             name: "هندسة تقنيات الحاسوب",
+            avg: 60,
         },
         {
             name: "علوم الحاسبات",
+            avg: 57,
         },
         {
             name: "قانون",
+            avg: 55,
         },
         {
             name: "محاسبة",
+            avg: 50,
         },
         {
             name: "إدارة واقتصاد",
+            avg: 50,
         },
         {
             name: "آداب انكليزي",
+            avg: 50,
         },
     ];
+
+    const filteredDepts = dept.filter((item) => {
+        return (
+            item.avg <= parseInt(props.student.avg) && props.student.avg >= 50
+        );
+    });
+
+    console.log(filteredDepts);
+
     const type = [
         {
             name: "صباحي",
@@ -82,36 +98,42 @@ const Create = (props) => {
                         <div className="w-full bg-white py-8 rounded-lg">
                             <div className="w-full px-6">
                                 <div className="-mx-3 ">
-                                    <form className="px-3 grid grid-cols-2 items-center justify-center gap-x-3">
-                                        <FormItem>
-                                            <Combo
-                                                className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                                name="dept"
-                                                label="القسم"
-                                                options={dept}
-                                                handleChange={(e) => {
-                                                    handleChange(e);
-                                                }}
-                                            />
-                                        </FormItem>
-                                        <FormItem>
-                                            <Combo
-                                                className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                                name="type"
-                                                label="الدراسة"
-                                                options={type}
-                                                handleChange={(e) => {
-                                                    handleChange(e);
-                                                }}
-                                            />
-                                        </FormItem>
-                                    </form>
-                                    <Button
-                                        handleClick={handleSubmit}
-                                        className=" mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100"
-                                    >
-                                        تسجيل
-                                    </Button>
+                                    {filteredDepts.length > 0 ? (
+                                        <>
+                                            <form className="px-3 grid grid-cols-2 items-center justify-center gap-x-3">
+                                                <FormItem>
+                                                    <Combo
+                                                        className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                        name="dept"
+                                                        label="القسم"
+                                                        options={filteredDepts}
+                                                        handleChange={(e) => {
+                                                            handleChange(e);
+                                                        }}
+                                                    />
+                                                </FormItem>
+                                                <FormItem>
+                                                    <Combo
+                                                        className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                        name="type"
+                                                        label="الدراسة"
+                                                        options={type}
+                                                        handleChange={(e) => {
+                                                            handleChange(e);
+                                                        }}
+                                                    />
+                                                </FormItem>
+                                            </form>
+                                            <Button
+                                                handleClick={handleSubmit}
+                                                className=" mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100"
+                                            >
+                                                تسجيل
+                                            </Button>
+                                        </>
+                                    ) : (
+                                        <h1>معدلك لا يؤهلك للقبول في كليتنا</h1>
+                                    )}
                                 </div>
                             </div>
                         </div>

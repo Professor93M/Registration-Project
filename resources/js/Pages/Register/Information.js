@@ -3,6 +3,7 @@ import Table from "@/Components/table/Table";
 import Authenticated from "@/Layouts/Authenticated";
 
 const Information = ({ columns, register, auth }) => {
+    console.log(auth);
     console.log(register);
     let rows = [];
     const generatedRows = register.map((item) => {
@@ -14,6 +15,7 @@ const Information = ({ columns, register, auth }) => {
             DOB: item.students.DOB,
             branch: item.students.branch,
             gender: item.students.gender,
+            year: item.students.year,
             dept: item.dept,
             type: item.type,
             round: item.students.round,
@@ -21,14 +23,12 @@ const Information = ({ columns, register, auth }) => {
     });
 
     rows = [...generatedRows];
-    const cols = Object.keys(register[0].students);
-    console.log(cols);
-    console.log(rows);
+    const cols = Object.keys(columns);
 
     return (
         <Authenticated auth={auth}>
             <div
-                className=" max-w-5xl mx-auto  bg-white overflow-hidden shadow-xl sm:rounded-lg"
+                className=" max-w-6xl mx-auto  bg-white overflow-hidden shadow-xl sm:rounded-lg"
                 style={{
                     height: "80vh",
                     marginTop: "5vh",
@@ -38,8 +38,8 @@ const Information = ({ columns, register, auth }) => {
                 <h1 className="text-2xl text-center text-gray-800 font-bold mb-4">
                     الطلبة المقبولين{" "}
                 </h1>
-                <div className="max-w-4xl mx-auto">
-                    <Table data={rows} cols={cols} />
+                <div className="max-w-5xl mx-auto">
+                    <Table data={rows} cols={cols} arabicCols={columns} />
                 </div>
             </div>
         </Authenticated>

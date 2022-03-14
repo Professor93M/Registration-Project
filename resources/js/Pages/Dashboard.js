@@ -3,6 +3,7 @@ import Authenticated from "@/Layouts/Authenticated";
 import { Head } from "@inertiajs/inertia-react";
 import StageCard from "@/Components/StageCard";
 import Toast from "@/Components/Toast";
+import { FcAddDatabase, FcApproval, FcDepartment } from "react-icons/fc";
 
 export default function Dashboard(props) {
     console.log(props);
@@ -26,6 +27,7 @@ export default function Dashboard(props) {
             active: true,
             className: "bg-blue-300 border-b border-gray-200",
             duration: "1000",
+            icon: <FcAddDatabase className="w-12 h-12" />,
         },
         {
             title: "المرحلة الثانية",
@@ -36,6 +38,7 @@ export default function Dashboard(props) {
             active: props.stage1 ? true : false,
             className: "bg-orange-300 border-b border-gray-200",
             duration: "3000",
+            icon: <FcDepartment className="w-12 h-12" />,
         },
         {
             title: "المرحلة الثالثة",
@@ -46,6 +49,7 @@ export default function Dashboard(props) {
             active: props.stage2 ? true : false,
             className: "bg-green-300 border-b border-gray-200",
             duration: "5000",
+            icon: <FcApproval className="w-12 h-12" />,
         },
     ];
     return (
@@ -64,7 +68,7 @@ export default function Dashboard(props) {
                             </p>
                         </div>
                         <div className="w-full bg-white py-8">
-                            <div className="w-3/4 mx-auto grid grid-cols-3 gap-4 shadow-sm">
+                            <div className="w-3/4 mx-auto grid grid-cols-3 gap-4 mt-10 h-96 shadow-sm">
                                 {stages.map((stage) => (
                                     <StageCard
                                         key={stage.title}
@@ -74,6 +78,7 @@ export default function Dashboard(props) {
                                         className={stage.className}
                                         description={stage.description}
                                         duration={stage.duration}
+                                        icon={stage.icon}
                                     />
                                 ))}
                             </div>
