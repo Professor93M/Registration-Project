@@ -28,11 +28,11 @@ class RegisterController extends Controller
             'dept' => 'required',
             'type' => 'required'
         ]);
-
+        $id = Students::select('id')->where('users_id', Auth::user()->id)->first();
         Register::create([
             'dept' => $request->dept,
             'type' => $request->type,
-            'students_id' => Students::where('users_id', Auth::user()->id)->first('id')
+            'students_id' => $id['id']
         ]);
 
         return Redirect::route('dashboard')->with('success', ['icon' => 'success' ,'title' => 'نجحت العملية', 'message' => 'تم اختيار القسم']);
@@ -46,10 +46,11 @@ class RegisterController extends Controller
             'student' => $std
         ]);
     }
-    
-    public function update($id, Request $request){
+
+    public function update(Request $request){
         $std = Students::where('users_id', Auth::user()->id)->first('id');
-        $register = Register::where('students_id', $std)->first();
+        $register = Register::where('students_id', $std->id)->first();
+
         $request->validate([
             'dept' => 'required',
             'type' => 'required'
@@ -66,8 +67,10 @@ class RegisterController extends Controller
     }
 
     public function information(Register $register){
+        $std = Students::where('users_id', Auth::user()->id)->first('id');
+        $reg = Register::where('students_id', $std['id'])->first();
         return Inertia::render('Register/Information', [
-            'register' => $register->with('students')->get(),
+            'register' => $register->with('students')->where('dept', $reg->dept)->get(),
             'columns' => ['#', 'الاسم', 'المعدل', 'سنة التخرج', 'التولد', 'القسم', 'الدراسة', 'تاريخ التسجيل']
         ]);
     }

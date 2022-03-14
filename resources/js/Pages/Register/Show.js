@@ -12,6 +12,7 @@ const Show = (props) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         dept: props.register.dept || "",
         type: props.register.type || "",
+        _method: "PUT",
     });
 
     const dept = [
@@ -56,7 +57,7 @@ const Show = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(data);
-        post("/dsave");
+        post("/dupdate");
     };
 
     return (

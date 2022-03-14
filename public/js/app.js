@@ -3932,7 +3932,8 @@ var Show = function Show(props) {
 
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
     dept: props.register.dept || "",
-    type: props.register.type || ""
+    type: props.register.type || "",
+    _method: "PUT"
   }),
       data = _useForm.data,
       setData = _useForm.setData,
@@ -3969,7 +3970,7 @@ var Show = function Show(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     console.log(data);
-    post("/dsave");
+    post("/dupdate");
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -4290,12 +4291,10 @@ var Show = function Show(props) {
   console.log(props.student);
 
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+    idn: props.student.idn || "",
     fullname: props.student.fullname || "",
-    address: props.student.address || "",
     dob: props.student.DOB || "",
     gender: props.student.gender || "",
-    phone: props.student.phone || "",
-    email: props.student.email || "",
     avg: props.student.avg || "",
     branch: props.student.branch || "",
     sum: props.student.sum || "",
@@ -4336,7 +4335,7 @@ var Show = function Show(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     console.log(data);
-    post("/update/".concat(props.auth.user.id));
+    post('/update');
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -4378,13 +4377,6 @@ var Show = function Show(props) {
                     handleChange: _handleChange,
                     value: data.fullname
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "address",
-                    type: "text",
-                    label: "\u0627\u0644\u0639\u0646\u0648\u0627\u0646",
-                    className: "col-span-2",
-                    handleChange: _handleChange,
-                    value: data.address
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     name: "dob",
                     type: "date",
                     label: "\u062A\u0627\u0631\u064A\u062E \u0627\u0644\u0645\u064A\u0644\u0627\u062F",
@@ -4402,69 +4394,66 @@ var Show = function Show(props) {
                         _handleChange(e);
                       }
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "email",
-                    type: "email",
-                    label: "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A",
-                    handleChange: _handleChange,
-                    value: data.email
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "phone",
-                    type: "tel",
-                    label: "\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062A\u0641",
-                    pattern: "[0-9]{4}-[0-9]{4}-[0-9]{3}",
-                    handleChange: _handleChange,
-                    value: data.phone
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                      className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
-                      name: "branch",
-                      add: "true",
-                      value: data.branch,
-                      label: "\u0627\u0644\u0641\u0631\u0639",
-                      options: branch,
-                      handleChange: function handleChange(e) {
-                        _handleChange(e);
-                      }
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                      className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
-                      name: "round",
-                      add: "true",
-                      value: data.round,
-                      label: "\u0627\u0644\u062F\u0648\u0631",
-                      options: round,
-                      handleChange: function handleChange(e) {
-                        _handleChange(e);
-                      }
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "sum",
-                    type: "number",
-                    label: "\u0627\u0644\u0645\u062C\u0645\u0648\u0639",
-                    handleChange: _handleChange,
-                    value: data.sum
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "n_lessons",
-                    type: "number",
-                    label: "\u0639\u062F\u062F \u0627\u0644\u062F\u0631\u0648\u0633",
-                    handleChange: _handleChange,
-                    value: data.n_lessons
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "avg",
-                    type: "number",
-                    label: "\u0627\u0644\u0645\u0639\u062F\u0644",
-                    max: "100",
-                    min: "50",
-                    handleChange: _handleChange,
-                    value: data.avg
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    name: "year",
-                    type: "number",
-                    label: "\u0633\u0646\u0629 \u0627\u0644\u062A\u062E\u0631\u062C",
-                    handleChange: _handleChange,
-                    value: data.year
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                    className: "col-span-4 gap-4 grid grid-cols-4 border-2 p-3 rounded-lg mt-3",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      className: "col-span-2",
+                      name: "idn",
+                      type: "number",
+                      label: "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u064A",
+                      handleChange: _handleChange,
+                      value: data.idn
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                        className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                        name: "branch",
+                        add: "true",
+                        value: data.branch,
+                        label: "\u0627\u0644\u0641\u0631\u0639",
+                        options: branch,
+                        handleChange: function handleChange(e) {
+                          _handleChange(e);
+                        }
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                        className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                        name: "round",
+                        add: "true",
+                        value: data.round,
+                        label: "\u0627\u0644\u062F\u0648\u0631",
+                        options: round,
+                        handleChange: function handleChange(e) {
+                          _handleChange(e);
+                        }
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      name: "sum",
+                      type: "number",
+                      label: "\u0627\u0644\u0645\u062C\u0645\u0648\u0639",
+                      handleChange: _handleChange,
+                      value: data.sum
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      name: "n_lessons",
+                      type: "number",
+                      label: "\u0639\u062F\u062F \u0627\u0644\u062F\u0631\u0648\u0633",
+                      handleChange: _handleChange,
+                      value: data.n_lessons
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      name: "avg",
+                      type: "number",
+                      label: "\u0627\u0644\u0645\u0639\u062F\u0644",
+                      max: "100",
+                      min: "50",
+                      handleChange: _handleChange,
+                      value: data.avg
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      name: "year",
+                      type: "number",
+                      label: "\u0633\u0646\u0629 \u0627\u0644\u062A\u062E\u0631\u062C",
+                      handleChange: _handleChange,
+                      value: data.year
+                    })]
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
                   handleClick: handleSubmit,

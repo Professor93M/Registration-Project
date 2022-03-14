@@ -10,12 +10,10 @@ import Combo from "@/Components/Combo";
 const Show = (props) => {
     console.log(props.student);
     const { data, setData, post, processing, errors, reset } = useForm({
+        idn: props.student.idn || "",
         fullname: props.student.fullname || "",
-        address: props.student.address || "",
         dob: props.student.DOB || "",
         gender: props.student.gender || "",
-        phone: props.student.phone || "",
-        email: props.student.email || "",
         avg: props.student.avg || "",
         branch: props.student.branch || "",
         sum: props.student.sum || "",
@@ -63,7 +61,7 @@ const Show = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(data);
-        post(`/update/${props.auth.user.id}`);
+        post('/update');
     };
 
     return (
@@ -99,14 +97,6 @@ const Show = (props) => {
                                             value={data.fullname}
                                         />
                                         <FormItem
-                                            name="address"
-                                            type="text"
-                                            label="العنوان"
-                                            className="col-span-2"
-                                            handleChange={handleChange}
-                                            value={data.address}
-                                        />
-                                        <FormItem
                                             name="dob"
                                             type="date"
                                             label="تاريخ الميلاد"
@@ -126,77 +116,72 @@ const Show = (props) => {
                                                 }}
                                             />
                                         </FormItem>
-                                        <FormItem
-                                            name="email"
-                                            type="email"
-                                            label="البريد الالكتروني"
-                                            handleChange={handleChange}
-                                            value={data.email}
-                                        />
-                                        <FormItem
-                                            name="phone"
-                                            type="tel"
-                                            label="رقم الهاتف"
-                                            pattern="[0-9]{4}-[0-9]{4}-[0-9]{3}"
-                                            handleChange={handleChange}
-                                            value={data.phone}
-                                        />
-                                        <FormItem>
-                                            <Combo
-                                                className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                                name="branch"
-                                                add={"true"}
-                                                value={data.branch}
-                                                label="الفرع"
-                                                options={branch}
-                                                handleChange={(e) => {
-                                                    handleChange(e);
-                                                }}
+                                        <div className="col-span-4 gap-4 grid grid-cols-4 border-2 p-3 rounded-lg mt-3">
+                                            <FormItem
+                                                className="col-span-2"
+                                                name="idn"
+                                                type="number"
+                                                label="الرقم الامتحاني"
+                                                handleChange={handleChange}
+                                                value={data.idn}
                                             />
-                                        </FormItem>
-                                        <FormItem>
-                                            <Combo
-                                                className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                                name="round"
-                                                add={"true"}
-                                                value={data.round}
-                                                label="الدور"
-                                                options={round}
-                                                handleChange={(e) => {
-                                                    handleChange(e);
-                                                }}
+                                            <FormItem>
+                                                <Combo
+                                                    className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                    name="branch"
+                                                    add={"true"}
+                                                    value={data.branch}
+                                                    label="الفرع"
+                                                    options={branch}
+                                                    handleChange={(e) => {
+                                                        handleChange(e);
+                                                    }}
+                                                />
+                                            </FormItem>
+                                            <FormItem>
+                                                <Combo
+                                                    className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                    name="round"
+                                                    add={"true"}
+                                                    value={data.round}
+                                                    label="الدور"
+                                                    options={round}
+                                                    handleChange={(e) => {
+                                                        handleChange(e);
+                                                    }}
+                                                />
+                                            </FormItem>
+                                            <FormItem
+                                                name="sum"
+                                                type="number"
+                                                label="المجموع"
+                                                handleChange={handleChange}
+                                                value={data.sum}
                                             />
-                                        </FormItem>
-                                        <FormItem
-                                            name="sum"
-                                            type="number"
-                                            label="المجموع"
-                                            handleChange={handleChange}
-                                            value={data.sum}
-                                        />
-                                        <FormItem
-                                            name="n_lessons"
-                                            type="number"
-                                            label="عدد الدروس"
-                                            handleChange={handleChange}
-                                            value={data.n_lessons}
-                                        />
-                                        <FormItem
-                                            name="avg"
-                                            type="number"
-                                            label="المعدل"
-                                            max="100"
-                                            min="50"
-                                            handleChange={handleChange}
-                                            value={data.avg}
-                                        />
-                                        <FormItem
-                                            name="year"
-                                            type="number"
-                                            label="سنة التخرج"
-                                            handleChange={handleChange}
-                                            value={data.year}
-                                        />
+                                            <FormItem
+                                                name="n_lessons"
+                                                type="number"
+                                                label="عدد الدروس"
+                                                handleChange={handleChange}
+                                                value={data.n_lessons}
+                                            />
+                                            <FormItem
+                                                name="avg"
+                                                type="number"
+                                                label="المعدل"
+                                                max="100"
+                                                min="50"
+                                                handleChange={handleChange}
+                                                value={data.avg}
+                                            />
+                                            <FormItem
+                                                name="year"
+                                                type="number"
+                                                label="سنة التخرج"
+                                                handleChange={handleChange}
+                                                value={data.year}
+                                            />
+                                        </div>
                                     </form>
 
                                     <Button

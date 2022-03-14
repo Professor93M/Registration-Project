@@ -58,21 +58,55 @@ class StudentsController extends Controller
 
     public function update(Request $request){
         $student = Students::where('users_id', Auth::user()->id)->first();
-        $request->validate([
-            'idn' => 'required|numeric|unique:students,idn',
-            'fullname' => 'required|min:10',
-            'dob' => 'required|date',
-            'year' => 'required',
-            'gender' => 'required',
-            'n_lessons' => 'required|numeric',
-            'sum' => 'required|numeric',
-            'round' => 'required',
-            'branch' => 'required',
-        ]);
         if($request->idn !== $student->idn || $request->fullname !== $student->fullname || $request->dob !== $student->DOB || 
         $request->year !== $student->year || $request->gender !== $student->gender ||
         $request->n_lessons !== $student->n_lessons || $request->sum !== $student->sum ||
         $request->round !== $student->round || $request->branch !== $student->branch){
+            if($request->idn !== $student->idn){
+                $request->validate([
+                    'idn' => 'required|numeric|unique:students,idn',
+                ]);
+            }
+            if($request->fullname !== $student->fullname){
+                $request->validate([
+                    'fullname' => 'required|min:10',
+                ]);
+            }
+            if($request->dob !== $student->DOB){
+                $request->validate([
+                    'dob' => 'required|date',
+                ]);
+            }
+            if($request->year !== $student->year){
+                $request->validate([
+                    'year' => 'required',
+                ]);
+            }
+            if($request->gender !== $student->idn){
+                $request->validate([
+                    'gender' => 'required',
+                ]);
+            }
+            if($request->n_lessons !== $student->n_lessons){
+                $request->validate([
+                    'n_lessons' => 'required|numeric',
+                ]);
+            }
+            if($request->sum !== $student->sum){
+                $request->validate([
+                    'sum' => 'required|numeric',
+                ]);
+            }
+            if($request->round !== $student->round){
+                $request->validate([
+                    'round' => 'required',
+                ]);
+            }
+            if($request->branch !== $student->branch){
+                $request->validate([
+                    'branch' => 'required',
+                ]);
+            }
             $student->update([
                 'idn' => $request->idn,
                 'fullname' => $request->fullname,
