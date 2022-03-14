@@ -6,6 +6,7 @@ import { FadeIn, SlideUp } from "@/animations";
 import FormItem from "@/Components/FormItem";
 import Button from "@/Components/Button";
 import Combo from "@/Components/Combo";
+import { Inertia } from "@inertiajs/inertia";
 
 const Show = (props) => {
     console.log(props.student);
@@ -61,6 +62,10 @@ const Show = (props) => {
             e.target.name,
             e.target.type === "checkbox" ? e.target.checked : e.target.value
         );
+    };
+
+    const back = () => {
+        Inertia.get("/dashboard");
     };
 
     const handleSubmit = (e) => {
@@ -189,12 +194,20 @@ const Show = (props) => {
                                         </div>
                                     </form>
 
-                                    <Button
-                                        handleClick={handleSubmit}
-                                        className=" mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100"
-                                    >
-                                        تسجيل
-                                    </Button>
+                                    <div className="flex gap-x-10 justify-center">
+                                        <Button
+                                            handleClick={handleSubmit}
+                                            className=" mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100"
+                                        >
+                                            تسجيل
+                                        </Button>
+                                        <Button
+                                            handleClick={back}
+                                            className=" mt-6 bg-slate-500 px-4 py-2 rounded-lg text-slate-100"
+                                        >
+                                            رجوع
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -68,7 +68,7 @@ export default function Dashboard(props) {
                             </p>
                         </div>
                         <div className="w-full bg-white py-8">
-                            <div className="w-3/4 mx-auto grid grid-cols-3 gap-4 mt-10 h-96 shadow-sm">
+                            <div className="w-3/4 mx-auto grid grid-cols-3 gap-4 mt-10 h-80 shadow-sm">
                                 {stages.map((stage) => (
                                     <StageCard
                                         key={stage.title}

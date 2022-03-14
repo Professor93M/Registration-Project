@@ -6,6 +6,7 @@ import { FadeIn, SlideUp } from "@/animations";
 import FormItem from "@/Components/FormItem";
 import Button from "@/Components/Button";
 import Combo from "@/Components/Combo";
+import { Inertia } from "@inertiajs/inertia";
 
 const Information = (props) => {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -65,6 +66,10 @@ const Information = (props) => {
         e.preventDefault();
         console.log(data);
         post("/store");
+    };
+
+    const back = () => {
+        Inertia.get("/dashboard");
     };
 
     return (
@@ -184,12 +189,20 @@ const Information = (props) => {
                                         </div>
                                     </form>
 
-                                    <Button
-                                        handleClick={handleSubmit}
-                                        className=" mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100"
-                                    >
-                                        تسجيل
-                                    </Button>
+                                    <div className="flex gap-x-10 justify-center">
+                                        <Button
+                                            handleClick={handleSubmit}
+                                            className=" mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100"
+                                        >
+                                            تسجيل
+                                        </Button>
+                                        <Button
+                                            handleClick={back}
+                                            className=" mt-6 bg-slate-500 px-4 py-2 rounded-lg text-slate-100"
+                                        >
+                                            رجوع
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

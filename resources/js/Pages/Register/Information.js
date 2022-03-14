@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Table from "@/Components/table/Table";
 import Authenticated from "@/Layouts/Authenticated";
+import { Inertia } from "@inertiajs/inertia";
+import Button from "@/Components/Button";
 
 const Information = ({ columns, register, auth }) => {
     console.log(auth);
@@ -25,6 +27,10 @@ const Information = ({ columns, register, auth }) => {
     rows = [...generatedRows];
     const cols = Object.keys(columns);
 
+    const back = () => {
+        Inertia.get("/dashboard");
+    };
+
     return (
         <Authenticated auth={auth}>
             <div
@@ -40,6 +46,14 @@ const Information = ({ columns, register, auth }) => {
                 </h1>
                 <div className="max-w-5xl mx-auto">
                     <Table data={rows} cols={cols} arabicCols={columns} />
+                </div>
+                <div className="flex gap-x-10 mt-12 justify-center">
+                    <Button
+                        handleClick={back}
+                        className=" mt-6 bg-slate-500 px-4 py-2 rounded-lg text-slate-100"
+                    >
+                        رجوع
+                    </Button>
                 </div>
             </div>
         </Authenticated>
