@@ -19,24 +19,31 @@ const Show = (props) => {
     const dept = [
         {
             name: "هندسة مدني",
+            avg: 65,
         },
         {
             name: "هندسة تقنيات الحاسوب",
+            avg: 60,
         },
         {
             name: "علوم الحاسبات",
+            avg: 57,
         },
         {
             name: "قانون",
+            avg: 55,
         },
         {
             name: "محاسبة",
+            avg: 50,
         },
         {
             name: "إدارة واقتصاد",
+            avg: 50,
         },
         {
             name: "آداب انكليزي",
+            avg: 50,
         },
     ];
     const type = [
@@ -47,6 +54,12 @@ const Show = (props) => {
             name: "مسائي",
         },
     ];
+
+    const filteredDepts = dept.filter((item) => {
+        return (
+            item.avg <= parseInt(props.student.avg) && props.student.avg >= 50
+        );
+    });
 
     const handleChange = (e) => {
         setData(
@@ -95,7 +108,7 @@ const Show = (props) => {
                                                 name="dept"
                                                 label="القسم"
                                                 value={data.dept}
-                                                options={dept}
+                                                options={filteredDepts}
                                                 handleChange={(e) => {
                                                     handleChange(e);
                                                 }}

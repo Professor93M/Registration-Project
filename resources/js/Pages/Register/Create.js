@@ -17,6 +17,10 @@ const Create = (props) => {
 
     const dept = [
         {
+            name: "حدد القسم",
+            avg: 0,
+        },
+        {
             name: "هندسة مدني",
             avg: 65,
         },

@@ -3738,6 +3738,9 @@ var Create = function Create(props) {
       reset = _useForm.reset;
 
   var dept = [{
+    name: "حدد القسم",
+    avg: 0
+  }, {
     name: "هندسة مدني",
     avg: 65
   }, {
@@ -4026,25 +4029,35 @@ var Show = function Show(props) {
       reset = _useForm.reset;
 
   var dept = [{
-    name: "هندسة مدني"
+    name: "هندسة مدني",
+    avg: 65
   }, {
-    name: "هندسة تقنيات الحاسوب"
+    name: "هندسة تقنيات الحاسوب",
+    avg: 60
   }, {
-    name: "علوم الحاسبات"
+    name: "علوم الحاسبات",
+    avg: 57
   }, {
-    name: "قانون"
+    name: "قانون",
+    avg: 55
   }, {
-    name: "محاسبة"
+    name: "محاسبة",
+    avg: 50
   }, {
-    name: "إدارة واقتصاد"
+    name: "إدارة واقتصاد",
+    avg: 50
   }, {
-    name: "آداب انكليزي"
+    name: "آداب انكليزي",
+    avg: 50
   }];
   var type = [{
     name: "صباحي"
   }, {
     name: "مسائي"
   }];
+  var filteredDepts = dept.filter(function (item) {
+    return item.avg <= parseInt(props.student.avg) && props.student.avg >= 50;
+  });
 
   var _handleChange = function handleChange(e) {
     setData(e.target.name, e.target.type === "checkbox" ? e.target.checked : e.target.value);
@@ -4097,7 +4110,7 @@ var Show = function Show(props) {
                       name: "dept",
                       label: "\u0627\u0644\u0642\u0633\u0645",
                       value: data.dept,
-                      options: dept,
+                      options: filteredDepts,
                       handleChange: function handleChange(e) {
                         _handleChange(e);
                       }
@@ -4199,16 +4212,22 @@ var Information = function Information(props) {
       reset = _useForm.reset;
 
   var gender = [{
+    name: "حدد الجنس"
+  }, {
     name: "ذكر"
   }, {
     name: "أنثى"
   }];
   var branch = [{
+    name: "حدد الفرع"
+  }, {
     name: "علمي"
   }, {
     name: "ادبي"
   }];
   var round = [{
+    name: "حدد الدور"
+  }, {
     name: "الاول"
   }, {
     name: "الثاني"

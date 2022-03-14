@@ -24,6 +24,9 @@ const Information = (props) => {
 
     const gender = [
         {
+            name: "حدد الجنس",
+        },
+        {
             name: "ذكر",
         },
         {
@@ -32,6 +35,9 @@ const Information = (props) => {
     ];
     const branch = [
         {
+            name: "حدد الفرع",
+        },
+        {
             name: "علمي",
         },
         {
@@ -39,6 +45,9 @@ const Information = (props) => {
         },
     ];
     const round = [
+        {
+            name: "حدد الدور",
+        },
         {
             name: "الاول",
         },
