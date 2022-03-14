@@ -78,7 +78,8 @@ class RegisterController extends Controller
         return Inertia::render('Register/Information', [
             'dept' => $reg->dept,
             'register' => $register->with('students')->where('dept', $reg->dept)->get(),
-            'columns' => ['#', 'الاسم', 'المعدل', 'سنة التخرج', 'التولد', 'القسم', 'الدراسة', 'تاريخ التسجيل']
+            'columns' => ["id" => '#', "fullname" => 'الاسم الكامل', "avg" => 'المعدل', "year" => 'سنة التخرج', "DOB" => 'التولد', "dept" => 'القسم', "type" => 'نوع الدارسة', "created_at" => 'تاريخ التسجيل', ]
+            // 'columns' => ['#', 'الاسم', 'المعدل', 'سنة التخرج', 'التولد', 'القسم', 'الدراسة', 'تاريخ التسجيل']
         ]);
     }
 }
