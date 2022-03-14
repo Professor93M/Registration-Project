@@ -77,6 +77,7 @@ export default function Login({ status, canResetPassword }) {
 
                 <div className="flex items-center justify-end mt-4">
                     <Button
+                        url="auth"
                         className="border border-slate-500 px-3 py-1 bg-blue-400 rounded text-slate-100"
                         processing={processing}
                     >

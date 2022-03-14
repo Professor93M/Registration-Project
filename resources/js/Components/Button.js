@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { SlideRight } from "@/animations";
+import { SlideRight, FadeIn } from "@/animations";
 
 export default function Button({
     type = "submit",
@@ -8,10 +8,11 @@ export default function Button({
     processing,
     children,
     handleClick,
+    url,
 }) {
     return (
         <motion.button
-            variants={SlideRight}
+            variants={url === "auth" ? FadeIn : SlideRight}
             initial="hidden"
             animate="show"
             type={type}

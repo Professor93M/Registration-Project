@@ -132,7 +132,9 @@ export default function Register() {
                         initial="hidden"
                         type="button"
                         handleClick={handleClick}
+                        url="auth"
                         className=" border
+
                                                 
                          border-slate-500 px-3 py-1 bg-green-400 rounded text-slate-100"
                     >
@@ -140,6 +142,7 @@ export default function Register() {
                     </Button>
 
                     <Button
+                        url="auth"
                         className=" border border-slate-500 px-3 py-1 bg-blue-400 rounded text-slate-100"
                         processing={processing}
                     >

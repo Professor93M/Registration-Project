@@ -22,31 +22,31 @@ const ReactTable = ({ data, cols }) => {
         return index % 2 === 0;
     };
 
-    const tableHooks = (hooks) => {
-        hooks.visibleColumns.push((columns) => [
-            ...columns,
-            {
-                id: "edit",
-                Header: "edit",
-                Cell: ({ row }) => (
-                    <BiEdit
-                        className="bg-green-400 hover:bg-green-500 text-slate-200 w-8 h-8 p-1 rounded-md cursor-pointer "
-                        onClick={() => alert(row.values.id)}
-                    />
-                ),
-            },
-            {
-                id: "delete",
-                Header: "delete",
-                Cell: ({ row }) => (
-                    <BiTrash
-                        className="bg-red-400 hover:bg-red-500 text-slate-200 w-8 h-8 p-1 rounded-md cursor-pointer "
-                        onClick={() => alert(row.values.id)}
-                    />
-                ),
-            },
-        ]);
-    };
+    // const tableHooks = (hooks) => {
+    //     hooks.visibleColumns.push((columns) => [
+    //         ...columns,
+    //         {
+    //             id: "edit",
+    //             Header: "edit",
+    //             Cell: ({ row }) => (
+    //                 <BiEdit
+    //                     className="bg-green-400 hover:bg-green-500 text-slate-200 w-8 h-8 p-1 rounded-md cursor-pointer "
+    //                     onClick={() => alert(row.values.id)}
+    //                 />
+    //             ),
+    //         },
+    //         {
+    //             id: "delete",
+    //             Header: "delete",
+    //             Cell: ({ row }) => (
+    //                 <BiTrash
+    //                     className="bg-red-400 hover:bg-red-500 text-slate-200 w-8 h-8 p-1 rounded-md cursor-pointer "
+    //                     onClick={() => alert(row.values.id)}
+    //                 />
+    //             ),
+    //         },
+    //     ]);
+    // };
 
     const {
         getTableProps,
@@ -67,7 +67,6 @@ const ReactTable = ({ data, cols }) => {
     } = useTable(
         { columns: columns, data: data },
         useGlobalFilter,
-        tableHooks,
         useSortBy,
         usePagination
     );
@@ -82,7 +81,7 @@ const ReactTable = ({ data, cols }) => {
             />
             <table
                 {...getTableProps()}
-                className="rounded-t-lg overflow-hidden mx-auto max-w-5"
+                className="rounded-t-lg overflow-hidden mx-auto w-full"
             >
                 <thead className="bg-slate-700 text-slate-100/90 capitalize">
                     {headerGroups.map((headerGroup, i) => (
@@ -144,11 +143,11 @@ const ReactTable = ({ data, cols }) => {
                 </tbody>
             </table>
             <div className="max-w-2xl mt-8">
-                <div className="flex justify-between">
+                <div className="flex justify-between flex-row-reverse items-center">
                     <span>
-                        Page{" "}
+                        صفحة{" "}
                         <strong>
-                            {pageIndex + 1} of {pageOptions.length}
+                            {pageIndex + 1} من {pageOptions.length}
                         </strong>{" "}
                     </span>
                     <div className="flex gap-x-3">
@@ -186,9 +185,9 @@ const ReactTable = ({ data, cols }) => {
                         </button>{" "}
                     </div>
                     <span>
-                        Go to page:{" "}
+                        انتقل الى الصفحة :{" "}
                         <input
-                            className="bg-slate-700 text-slate-100/90 p-2 rounded-lg"
+                            className="appearance-none   bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             type="number"
                             min={1}
                             max={pageOptions.length}
@@ -207,10 +206,11 @@ const ReactTable = ({ data, cols }) => {
                         onChange={(e) => {
                             setPageSize(Number(e.target.value));
                         }}
+                        className="appearance-none block py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     >
                         {[10, 20, 30, 40, 50].map((pageSize) => (
                             <option key={pageSize} value={pageSize}>
-                                Show {pageSize}
+                                إعرض {pageSize}
                             </option>
                         ))}
                     </select>

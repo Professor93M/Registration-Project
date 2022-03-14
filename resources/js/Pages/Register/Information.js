@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Table from "@/Components/table/Table";
+import Authenticated from "@/Layouts/Authenticated";
 
-const Information = ({ columns, register }) => {
+const Information = ({ columns, register, auth }) => {
     console.log(register);
     let rows = [];
     const generatedRows = register.map((item) => {
@@ -25,18 +26,23 @@ const Information = ({ columns, register }) => {
     console.log(rows);
 
     return (
-        <div
-            className="w-full mx-auto p-4"
-            style={{
-                backgroundColor: "#fafafa",
-                padding: "20px",
-                borderRadius: "10px",
-                width: "72rem",
-                boxShadow: "0px 0px 10px #00000029",
-            }}
-        >
-            <Table data={rows} cols={cols} />
-        </div>
+        <Authenticated auth={auth}>
+            <div
+                className=" max-w-5xl mx-auto  bg-white overflow-hidden shadow-xl sm:rounded-lg"
+                style={{
+                    height: "80vh",
+                    marginTop: "5vh",
+                    paddingTop: "5vh",
+                }}
+            >
+                <h1 className="text-2xl text-center text-gray-800 font-bold mb-4">
+                    الطلبة المقبولين{" "}
+                </h1>
+                <div className="max-w-4xl mx-auto">
+                    <Table data={rows} cols={cols} />
+                </div>
+            </div>
+        </Authenticated>
     );
 };
 
