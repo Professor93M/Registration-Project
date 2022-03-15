@@ -12,7 +12,7 @@ export default function Dashboard(props) {
         props.success
             ? Toast.fire({
                   icon: props.success.icon,
-                  message: props.success.message,
+                  text: props.success.message,
                   title: props.success.title,
               })
             : null;
@@ -63,9 +63,6 @@ export default function Dashboard(props) {
                             <h1 className="text-3xl font-bold leading-tight text-gray-900">
                                 اهلا بك في صفحة التسجيل
                             </h1>
-                            <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                                للبدء قم بالضغط على مرحلة التسجيل الاولى
-                            </p>
                         </div>
                         <div className="w-full bg-white py-8">
                             <div className="w-3/4 mx-auto grid grid-cols-3 gap-4 mt-10 h-80 shadow-sm">

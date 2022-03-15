@@ -41,6 +41,15 @@ const Information = (props) => {
             name: "علمي",
         },
         {
+            name: "تطبيقي",
+        },
+        {
+            name: "مهني",
+        },
+        {
+            name: "احيائي",
+        },
+        {
             name: "ادبي",
         },
     ];
@@ -55,13 +64,14 @@ const Information = (props) => {
             name: "الثاني",
         },
         {
-            name: "الدور التكميلي",
+            name: "الثالث",
         },
     ];
 
     useEffect(() => {
         const avg = parseInt(data.sum) / parseInt(data.n_lessons);
-        setData({ ...data, avg: avg.toFixed(2) });
+
+        setData({ ...data, avg: avg.toFixed(2), year: year.toFixed(2) });
     }, [data.sum, data.n_lessons]);
 
     const handleChange = (e) => {

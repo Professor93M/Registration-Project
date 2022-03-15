@@ -2221,6 +2221,7 @@ function Button(_ref) {
       handleChange = _ref.handleChange,
       className = _ref.className,
       value = _ref.value,
+      disabled = _ref.disabled,
       label = _ref.label;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.div, {
     className: "flex flex-col items-center justify-center",
@@ -2234,6 +2235,7 @@ function Button(_ref) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(framer_motion__WEBPACK_IMPORTED_MODULE_4__.motion.select, {
       variants: _animations__WEBPACK_IMPORTED_MODULE_1__.FadeIn,
       initial: "hidden",
+      disabled: disabled,
       animate: "show",
       className: className,
       name: name,
@@ -2739,6 +2741,7 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().mixin({
   toast: true,
   icon: "success",
   title: "General Title",
+  text: "General Text",
   position: "top-right",
   showConfirmButton: false,
   timer: 3000,
@@ -3609,7 +3612,7 @@ function Dashboard(props) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     props.success ? _Components_Toast__WEBPACK_IMPORTED_MODULE_4__["default"].fire({
       icon: props.success.icon,
-      message: props.success.message,
+      text: props.success.message,
       title: props.success.title
     }) : null;
   }, [props.success]);
@@ -3655,15 +3658,12 @@ function Dashboard(props) {
         className: "max-w-7xl text-center mx-auto sm:px-6 lg:px-8",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "bg-white overflow-hidden shadow-xl sm:rounded-lg",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "p-6",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
               className: "text-3xl font-bold leading-tight text-gray-900",
               children: "\u0627\u0647\u0644\u0627 \u0628\u0643 \u0641\u064A \u0635\u0641\u062D\u0629 \u0627\u0644\u062A\u0633\u062C\u064A\u0644"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-              className: "mt-4 text-lg leading-relaxed text-gray-600",
-              children: "\u0644\u0644\u0628\u062F\u0621 \u0642\u0645 \u0628\u0627\u0644\u0636\u063A\u0637 \u0639\u0644\u0649 \u0645\u0631\u062D\u0644\u0629 \u0627\u0644\u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u0627\u0648\u0644\u0649"
-            })]
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "w-full bg-white py-8",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
@@ -3710,6 +3710,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Combo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Combo */ "./resources/js/Components/Combo.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -3724,6 +3742,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Create = function Create(props) {
+  var year;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      filteredTypes = _useState2[0],
+      setFilteredTypes = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      disabled = _useState4[0],
+      setDisabled = _useState4[1];
+
   console.log(props);
 
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
@@ -3737,35 +3767,51 @@ var Create = function Create(props) {
       errors = _useForm.errors,
       reset = _useForm.reset;
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    year = new Date(props.student.DOB).getFullYear();
+
+    if (year < 1993) {
+      setData(_objectSpread(_objectSpread({}, data), {}, {
+        type: "مسائي"
+      }));
+      setDisabled(true);
+    }
+  }, []);
   var dept = [{
     name: "حدد القسم",
     avg: 0
   }, {
     name: "هندسة مدني",
-    avg: 65
+    avg: 65,
+    branch: ["علمي", "مهني", "احيائي", "تطبيقي"]
   }, {
     name: "هندسة تقنيات الحاسوب",
-    avg: 60
+    avg: 60,
+    branch: ["علمي", "مهني", "احيائي", "تطبيقي"]
   }, {
     name: "علوم الحاسبات",
-    avg: 57
+    avg: 57,
+    branch: ["علمي", "مهني", "احيائي", "تطبيقي"]
   }, {
     name: "قانون",
-    avg: 55
+    avg: 55,
+    branch: ["علمي", "ادبي", "احيائي", "تطبيقي"]
   }, {
     name: "محاسبة",
-    avg: 50
+    avg: 50,
+    branch: ["علمي", "ادبي", "احيائي", "تطبيقي", "مهني"]
   }, {
     name: "إدارة واقتصاد",
-    avg: 50
+    avg: 50,
+    branch: ["علمي", "ادبي", "احيائي", "تطبيقي", "مهني"]
   }, {
     name: "آداب انكليزي",
-    avg: 50
+    avg: 50,
+    branch: ["علمي", "ادبي", "احيائي", "تطبيقي", "مهني"]
   }];
   var filteredDepts = dept.filter(function (item) {
     return item.avg <= parseInt(props.student.avg) && props.student.avg >= 50;
   });
-  console.log(filteredDepts);
   var type = [{
     name: "حدد الدراسة"
   }, {
@@ -3835,6 +3881,8 @@ var Create = function Create(props) {
                         className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
                         name: "type",
                         label: "\u0627\u0644\u062F\u0631\u0627\u0633\u0629",
+                        disabled: disabled,
+                        value: data.type,
                         options: type,
                         handleChange: function handleChange(e) {
                           _handleChange(e);
@@ -4029,26 +4077,36 @@ var Show = function Show(props) {
       reset = _useForm.reset;
 
   var dept = [{
+    name: "حدد القسم",
+    avg: 0
+  }, {
     name: "هندسة مدني",
-    avg: 65
+    avg: 65,
+    branch: ["علمي", "مهني", "احيائي", "تطبيقي"]
   }, {
     name: "هندسة تقنيات الحاسوب",
-    avg: 60
+    avg: 60,
+    branch: ["علمي", "مهني", "احيائي", "تطبيقي"]
   }, {
     name: "علوم الحاسبات",
-    avg: 57
+    avg: 57,
+    branch: ["علمي", "مهني", "احيائي", "تطبيقي"]
   }, {
     name: "قانون",
-    avg: 55
+    avg: 55,
+    branch: ["علمي", "ادبي", "احيائي", "تطبيقي"]
   }, {
     name: "محاسبة",
-    avg: 50
+    avg: 50,
+    branch: ["علمي", "ادبي", "احيائي", "تطبيقي", "مهني"]
   }, {
     name: "إدارة واقتصاد",
-    avg: 50
+    avg: 50,
+    branch: ["علمي", "ادبي", "احيائي", "تطبيقي", "مهني"]
   }, {
     name: "آداب انكليزي",
-    avg: 50
+    avg: 50,
+    branch: ["علمي", "ادبي", "احيائي", "تطبيقي", "مهني"]
   }];
   var type = [{
     name: "صباحي"
@@ -4223,6 +4281,12 @@ var Information = function Information(props) {
   }, {
     name: "علمي"
   }, {
+    name: "تطبيقي"
+  }, {
+    name: "مهني"
+  }, {
+    name: "احيائي"
+  }, {
     name: "ادبي"
   }];
   var round = [{
@@ -4232,12 +4296,13 @@ var Information = function Information(props) {
   }, {
     name: "الثاني"
   }, {
-    name: "الدور التكميلي"
+    name: "الثالث"
   }];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var avg = parseInt(data.sum) / parseInt(data.n_lessons);
     setData(_objectSpread(_objectSpread({}, data), {}, {
-      avg: avg.toFixed(2)
+      avg: avg.toFixed(2),
+      year: year.toFixed(2)
     }));
   }, [data.sum, data.n_lessons]);
 
@@ -4468,7 +4533,15 @@ var Show = function Show(props) {
     name: "أنثى"
   }];
   var branch = [{
+    name: "حدد الفرع"
+  }, {
     name: "علمي"
+  }, {
+    name: "تطبيقي"
+  }, {
+    name: "مهني"
+  }, {
+    name: "احيائي"
   }, {
     name: "ادبي"
   }];
@@ -4477,7 +4550,7 @@ var Show = function Show(props) {
   }, {
     name: "الثاني"
   }, {
-    name: "الدور التكميلي"
+    name: "الثالث"
   }];
 
   var _handleChange = function handleChange(e) {

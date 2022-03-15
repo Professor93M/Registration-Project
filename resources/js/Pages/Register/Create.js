@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Head, useForm } from "@inertiajs/inertia-react";
 import { motion } from "framer-motion";
@@ -9,11 +9,23 @@ import Combo from "@/Components/Combo";
 import { Inertia } from "@inertiajs/inertia";
 
 const Create = (props) => {
+    let year;
+    let [filteredTypes, setFilteredTypes] = useState([]);
+    const [disabled, setDisabled] = useState(false);
+
     console.log(props);
     const { data, setData, post, processing, errors, reset } = useForm({
         dept: "",
         type: "",
     });
+
+    useEffect(() => {
+        year = new Date(props.student.DOB).getFullYear();
+        if (year < 1993) {
+            setData({ ...data, type: "مسائي" });
+            setDisabled(true);
+        }
+    }, []);
 
     const dept = [
         {
@@ -23,30 +35,37 @@ const Create = (props) => {
         {
             name: "هندسة مدني",
             avg: 65,
+            branch: ["علمي", "مهني", "احيائي", "تطبيقي"],
         },
         {
             name: "هندسة تقنيات الحاسوب",
             avg: 60,
+            branch: ["علمي", "مهني", "احيائي", "تطبيقي"],
         },
         {
             name: "علوم الحاسبات",
             avg: 57,
+            branch: ["علمي", "مهني", "احيائي", "تطبيقي"],
         },
         {
             name: "قانون",
             avg: 55,
+            branch: ["علمي", "ادبي", "احيائي", "تطبيقي"],
         },
         {
             name: "محاسبة",
             avg: 50,
+            branch: ["علمي", "ادبي", "احيائي", "تطبيقي", "مهني"],
         },
         {
             name: "إدارة واقتصاد",
             avg: 50,
+            branch: ["علمي", "ادبي", "احيائي", "تطبيقي", "مهني"],
         },
         {
             name: "آداب انكليزي",
             avg: 50,
+            branch: ["علمي", "ادبي", "احيائي", "تطبيقي", "مهني"],
         },
     ];
 
@@ -55,8 +74,6 @@ const Create = (props) => {
             item.avg <= parseInt(props.student.avg) && props.student.avg >= 50
         );
     });
-
-    console.log(filteredDepts);
 
     const type = [
         {
@@ -129,6 +146,8 @@ const Create = (props) => {
                                                         className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                         name="type"
                                                         label="الدراسة"
+                                                        disabled={disabled}
+                                                        value={data.type}
                                                         options={type}
                                                         handleChange={(e) => {
                                                             handleChange(e);

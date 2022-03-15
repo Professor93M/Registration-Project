@@ -9,6 +9,7 @@ export default function Button({
     handleChange,
     className,
     value,
+    disabled,
     label,
 }) {
     return (
@@ -26,6 +27,7 @@ export default function Button({
             <motion.select
                 variants={FadeIn}
                 initial="hidden"
+                disabled={disabled}
                 animate="show"
                 className={className}
                 name={name}
