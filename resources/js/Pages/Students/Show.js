@@ -118,6 +118,7 @@ const Show = (props) => {
                                             label="الاسم الرباعي واللقب"
                                             handleChange={handleChange}
                                             value={data.fullname}
+                                            error={errors.fullname}
                                         />
                                         <FormItem
                                             name="dob"
@@ -125,8 +126,9 @@ const Show = (props) => {
                                             label="تاريخ الميلاد"
                                             handleChange={handleChange}
                                             value={data.dob}
+                                            error={errors.dob}
                                         />
-                                        <FormItem>
+                                        <FormItem error={errors.gender}>
                                             <Combo
                                                 className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                 name="gender"
@@ -147,6 +149,7 @@ const Show = (props) => {
                                                 label="الرقم الامتحاني"
                                                 handleChange={handleChange}
                                                 value={data.idn}
+                                                error={errors.idn}
                                             />
                                             <FormItem>
                                                 <Combo
@@ -161,7 +164,7 @@ const Show = (props) => {
                                                     }}
                                                 />
                                             </FormItem>
-                                            <FormItem>
+                                            <FormItem error={errors.round}>
                                                 <Combo
                                                     className="appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                     name="round"
@@ -180,6 +183,7 @@ const Show = (props) => {
                                                 label="المجموع"
                                                 handleChange={handleChange}
                                                 value={data.sum}
+                                                error={errors.sum}
                                             />
                                             <FormItem
                                                 name="n_lessons"
@@ -187,6 +191,7 @@ const Show = (props) => {
                                                 label="عدد الدروس"
                                                 handleChange={handleChange}
                                                 value={data.n_lessons}
+                                                error={errors.n_lessons}
                                             />
                                             <FormItem
                                                 name="avg"
@@ -203,6 +208,7 @@ const Show = (props) => {
                                                 label="سنة التخرج"
                                                 handleChange={handleChange}
                                                 value={data.year}
+                                                error={errors.year}
                                             />
                                         </div>
                                     </form>
@@ -212,7 +218,7 @@ const Show = (props) => {
                                             handleClick={handleSubmit}
                                             className=" mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100"
                                         >
-                                            تسجيل
+                                            تعديل
                                         </Button>
                                         <Button
                                             handleClick={back}

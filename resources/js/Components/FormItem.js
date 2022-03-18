@@ -17,6 +17,7 @@ const FormItem = ({
     className,
     children,
     disabled,
+    error,
 }) => {
     return (
         <motion.div
@@ -45,6 +46,7 @@ const FormItem = ({
                     disabled={disabled}
                 />
             )}
+            <small className="text-red-500 text-sm">{error}</small>
         </motion.div>
     );
 };

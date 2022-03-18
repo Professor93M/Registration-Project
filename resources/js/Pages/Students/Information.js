@@ -71,7 +71,7 @@ const Information = (props) => {
     useEffect(() => {
         const avg = parseInt(data.sum) / parseInt(data.n_lessons);
 
-        setData({ ...data, avg: avg.toFixed(2), year: year.toFixed(2) });
+        setData({ ...data, avg: avg.toFixed(2), year: year });
     }, [data.sum, data.n_lessons]);
 
     const handleChange = (e) => {
@@ -122,6 +122,7 @@ const Information = (props) => {
                                             label="الاسم الرباعي واللقب"
                                             handleChange={handleChange}
                                             value={data.fullname}
+                                            error={errors.fullname}
                                         />
                                         <FormItem
                                             name="dob"
@@ -129,8 +130,9 @@ const Information = (props) => {
                                             label="تاريخ الميلاد"
                                             handleChange={handleChange}
                                             value={data.dob}
+                                            error={errors.dob}
                                         />
-                                        <FormItem>
+                                        <FormItem error={errors.gender}>
                                             <Combo
                                                 className="appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                 name="gender"
@@ -150,8 +152,9 @@ const Information = (props) => {
                                                 label="الرقم الامتحاني"
                                                 handleChange={handleChange}
                                                 value={data.idn}
+                                                error={errors.idn}
                                             />
-                                            <FormItem>
+                                            <FormItem error={errors.branch}>
                                                 <Combo
                                                     className="appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                     name="branch"
@@ -163,7 +166,7 @@ const Information = (props) => {
                                                     }}
                                                 />
                                             </FormItem>
-                                            <FormItem>
+                                            <FormItem error={errors.round}>
                                                 <Combo
                                                     className="appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                     name="round"
@@ -176,6 +179,7 @@ const Information = (props) => {
                                                 />
                                             </FormItem>
                                             <FormItem
+                                                error={errors.sum}
                                                 name="sum"
                                                 type="number"
                                                 label="المجموع"
@@ -183,6 +187,7 @@ const Information = (props) => {
                                                 value={data.sum}
                                             />
                                             <FormItem
+                                                error={errors.n_lessons}
                                                 name="n_lessons"
                                                 type="number"
                                                 label="عدد الدروس"
@@ -204,6 +209,7 @@ const Information = (props) => {
                                                 label="سنة التخرج"
                                                 handleChange={handleChange}
                                                 value={data.year}
+                                                error={errors.year}
                                             />
                                         </div>
                                     </form>

@@ -2450,7 +2450,8 @@ var FormItem = function FormItem(_ref) {
       handleChange = _ref.handleChange,
       className = _ref.className,
       children = _ref.children,
-      disabled = _ref.disabled;
+      disabled = _ref.disabled,
+      error = _ref.error;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(framer_motion__WEBPACK_IMPORTED_MODULE_5__.motion.div, {
     variants: _animations__WEBPACK_IMPORTED_MODULE_1__.Container,
     initial: "hidden",
@@ -2470,6 +2471,9 @@ var FormItem = function FormItem(_ref) {
       pattern: pattern,
       handleChange: handleChange,
       disabled: disabled
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("small", {
+      className: "text-red-500 text-sm",
+      children: error
     })]
   });
 };
@@ -3130,24 +3134,16 @@ function Authenticated(_ref) {
         className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "flex justify-between h-16",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
             className: "flex",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-              className: "shrink-0 flex items-center",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
-                href: "/",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_ApplicationLogo__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                  className: "block h-9 w-auto text-gray-500"
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
               className: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_NavLink__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                href: route('dashboard'),
-                active: route().current('dashboard'),
-                children: "Dashboard"
+                href: route("dashboard"),
+                active: route().current("dashboard"),
+                children: "\u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629"
               })
-            })]
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
             className: "hidden sm:flex sm:items-center sm:ml-6",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -3174,7 +3170,7 @@ function Authenticated(_ref) {
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_Dropdown__WEBPACK_IMPORTED_MODULE_2__["default"].Content, {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_Dropdown__WEBPACK_IMPORTED_MODULE_2__["default"].Link, {
-                    href: route('logout'),
+                    href: route("logout"),
                     method: "post",
                     as: "button",
                     children: "Log Out"
@@ -3197,13 +3193,13 @@ function Authenticated(_ref) {
                 fill: "none",
                 viewBox: "0 0 24 24",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
-                  className: !showingNavigationDropdown ? 'inline-flex' : 'hidden',
+                  className: !showingNavigationDropdown ? "inline-flex" : "hidden",
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   strokeWidth: "2",
                   d: "M4 6h16M4 12h16M4 18h16"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
-                  className: showingNavigationDropdown ? 'inline-flex' : 'hidden',
+                  className: showingNavigationDropdown ? "inline-flex" : "hidden",
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   strokeWidth: "2",
@@ -3214,12 +3210,12 @@ function Authenticated(_ref) {
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: (showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden',
+        className: (showingNavigationDropdown ? "block" : "hidden") + " sm:hidden",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
           className: "pt-2 pb-3 space-y-1",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_4__["default"], {
-            href: route('dashboard'),
-            active: route().current('dashboard'),
+            href: route("dashboard"),
+            active: route().current("dashboard"),
             children: "Dashboard"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
@@ -3237,7 +3233,7 @@ function Authenticated(_ref) {
             className: "mt-3 space-y-1",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_4__["default"], {
               method: "post",
-              href: route('logout'),
+              href: route("logout"),
               as: "button",
               children: "Log Out"
             })
@@ -4302,7 +4298,7 @@ var Information = function Information(props) {
     var avg = parseInt(data.sum) / parseInt(data.n_lessons);
     setData(_objectSpread(_objectSpread({}, data), {}, {
       avg: avg.toFixed(2),
-      year: year.toFixed(2)
+      year: year
     }));
   }, [data.sum, data.n_lessons]);
 
@@ -4357,14 +4353,17 @@ var Information = function Information(props) {
                     className: "col-span-2",
                     label: "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0631\u0628\u0627\u0639\u064A \u0648\u0627\u0644\u0644\u0642\u0628",
                     handleChange: _handleChange,
-                    value: data.fullname
+                    value: data.fullname,
+                    error: errors.fullname
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     name: "dob",
                     type: "date",
                     label: "\u062A\u0627\u0631\u064A\u062E \u0627\u0644\u0645\u064A\u0644\u0627\u062F",
                     handleChange: _handleChange,
-                    value: data.dob
+                    value: data.dob,
+                    error: errors.dob
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                    error: errors.gender,
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
                       className: "appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
                       name: "gender",
@@ -4383,8 +4382,10 @@ var Information = function Information(props) {
                       type: "number",
                       label: "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u064A",
                       handleChange: _handleChange,
-                      value: data.idn
+                      value: data.idn,
+                      error: errors.idn
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      error: errors.branch,
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
                         className: "appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
                         name: "branch",
@@ -4396,6 +4397,7 @@ var Information = function Information(props) {
                         }
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      error: errors.round,
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
                         className: "appearance-none mb-2 block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
                         name: "round",
@@ -4407,12 +4409,14 @@ var Information = function Information(props) {
                         }
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      error: errors.sum,
                       name: "sum",
                       type: "number",
                       label: "\u0627\u0644\u0645\u062C\u0645\u0648\u0639",
                       handleChange: _handleChange,
                       value: data.sum
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      error: errors.n_lessons,
                       name: "n_lessons",
                       type: "number",
                       label: "\u0639\u062F\u062F \u0627\u0644\u062F\u0631\u0648\u0633",
@@ -4431,7 +4435,8 @@ var Information = function Information(props) {
                       type: "number",
                       label: "\u0633\u0646\u0629 \u0627\u0644\u062A\u062E\u0631\u062C",
                       handleChange: _handleChange,
-                      value: data.year
+                      value: data.year,
+                      error: errors.year
                     })]
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -4604,14 +4609,17 @@ var Show = function Show(props) {
                     className: "col-span-2",
                     label: "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0631\u0628\u0627\u0639\u064A \u0648\u0627\u0644\u0644\u0642\u0628",
                     handleChange: _handleChange,
-                    value: data.fullname
+                    value: data.fullname,
+                    error: errors.fullname
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     name: "dob",
                     type: "date",
                     label: "\u062A\u0627\u0631\u064A\u062E \u0627\u0644\u0645\u064A\u0644\u0627\u062F",
                     handleChange: _handleChange,
-                    value: data.dob
+                    value: data.dob,
+                    error: errors.dob
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                    error: errors.gender,
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
                       className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
                       name: "gender",
@@ -4631,7 +4639,8 @@ var Show = function Show(props) {
                       type: "number",
                       label: "\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0627\u0645\u062A\u062D\u0627\u0646\u064A",
                       handleChange: _handleChange,
-                      value: data.idn
+                      value: data.idn,
+                      error: errors.idn
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
                         className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
@@ -4645,6 +4654,7 @@ var Show = function Show(props) {
                         }
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      error: errors.round,
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_Combo__WEBPACK_IMPORTED_MODULE_6__["default"], {
                         className: "appearance-none block w-full py-3 bg-gray-200 text-gray-700 border border-gray-200 rounded  leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
                         name: "round",
@@ -4661,13 +4671,15 @@ var Show = function Show(props) {
                       type: "number",
                       label: "\u0627\u0644\u0645\u062C\u0645\u0648\u0639",
                       handleChange: _handleChange,
-                      value: data.sum
+                      value: data.sum,
+                      error: errors.sum
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                       name: "n_lessons",
                       type: "number",
                       label: "\u0639\u062F\u062F \u0627\u0644\u062F\u0631\u0648\u0633",
                       handleChange: _handleChange,
-                      value: data.n_lessons
+                      value: data.n_lessons,
+                      error: errors.n_lessons
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_FormItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
                       name: "avg",
                       type: "number",
@@ -4681,7 +4693,8 @@ var Show = function Show(props) {
                       type: "number",
                       label: "\u0633\u0646\u0629 \u0627\u0644\u062A\u062E\u0631\u062C",
                       handleChange: _handleChange,
-                      value: data.year
+                      value: data.year,
+                      error: errors.year
                     })]
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -4689,7 +4702,7 @@ var Show = function Show(props) {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
                     handleClick: handleSubmit,
                     className: " mt-6 bg-blue-500 px-4 py-2 rounded-lg text-slate-100",
-                    children: "\u062A\u0633\u062C\u064A\u0644"
+                    children: "\u062A\u0639\u062F\u064A\u0644"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
                     handleClick: back,
                     className: " mt-6 bg-slate-500 px-4 py-2 rounded-lg text-slate-100",
