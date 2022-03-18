@@ -71,7 +71,8 @@ class StudentsController extends Controller
             'users_id' => Auth::user()->id
         ]);
 
-        return Redirect::route('dashboard')->with('success', ['icon' => 'success' ,'title' => 'نجحت العملية', 'message' => 'تم خزن بياناتك']);
+        return Redirect::route('dashboard')->
+        with('success', ['icon' => 'success' ,'title' => 'نجحت العملية', 'message' => 'تم خزن بياناتك']);
     }
     
     public function show(){
